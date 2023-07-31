@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
-@onready var camera_mount = $Pivot
+@onready var camera_mount = $finger
+@onready var state_machine = $finger/AnimationPlayer/AnimationTree.get("parameters/playback")
+
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -13,27 +15,33 @@ func _ready():
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x*sens))
-		camera_mount.rotate_x(deg_to_rad(-event.relative.y*sens))
+		var xRot = clamp(rotation.x - event.relative.y /1000 * 5, -0.85, 1)
+		var yRot = rotation.y - event.relative.x / 1000 * 5
+		rotation = Vector3(xRot, yRot, 0)
+
 
 func _physics_process(delta):
-	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
-	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if Input.is_action_just_pressed("fight"):
+		state_machine.travel("punch")
+	else:
+		state_machine.travel("idle")
+	if Input.is_action_just_pressed("shoot"):
+		state_machine.travel("shoot")
+	else:
+		state_machine.travel("idle")
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
-
+		
+			
+	
 	move_and_slide()
