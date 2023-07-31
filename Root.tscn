@@ -1,12 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://xdj7dhnho068"]
+[gd_scene load_steps=7 format=3 uid="uid://xdj7dhnho068"]
 
 [ext_resource type="PackedScene" uid="uid://crnrnqimmb3wn" path="res://Player.tscn" id="1_dgoaf"]
+[ext_resource type="Texture2D" uid="uid://gmd3xc12sh8u" path="res://addons/kenney_prototype_textures/dark/texture_05.png" id="1_qt6v1"]
+[ext_resource type="Script" path="res://movement.gd" id="3_lua15"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x58i5"]
-size = Vector3(30, 0.2, 30)
+size = Vector3(100, 0.2, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gt3tk"]
+albedo_texture = ExtResource("1_qt6v1")
+uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_soirp"]
-size = Vector3(30, 0.2, 30)
+size = Vector3(100, 0.2, 100)
 
 [node name="Root" type="Node"]
 
@@ -18,13 +24,18 @@ shape = SubResource("BoxShape3D_x58i5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0243149, -1, 0.0653801)
+material_override = SubResource("StandardMaterial3D_gt3tk")
 mesh = SubResource("BoxMesh_soirp")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_dgoaf")]
+script = ExtResource("3_lua15")
+sens = 0.5
 
 [node name="Pivot" type="Marker3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.365014, 2.59716)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.38149)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 4.81307, 0.172862)
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 8.41002, 3.72091)

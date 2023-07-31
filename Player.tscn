@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://crnrnqimmb3wn"]
 
-[ext_resource type="Script" path="res://CharacterBody3D.gd" id="1_8oblg"]
+[ext_resource type="Script" path="res://scrapped/CharacterBody3D.gd" id="1_h2mkc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tipje"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yb4vi"]
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
-script = ExtResource("1_8oblg")
+script = ExtResource("1_h2mkc")
 
 [node name="Node3D" type="Node3D" parent="."]
 
