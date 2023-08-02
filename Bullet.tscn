@@ -3,20 +3,22 @@
 [ext_resource type="Script" path="res://Bullet.gd" id="1_h3b6x"]
 [ext_resource type="ArrayMesh" uid="uid://d00q70aw60bsh" path="res://addons/kenney_weapon-pack/Models/ammo_sniper.obj" id="2_s01xh"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_a5ppt"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_l3qmr"]
+radius = 0.725
+height = 5.045
 
-[node name="Area3D" type="Area3D"]
+[node name="RigidBody" type="RigidBody3D"]
+mass = 0.01
+continuous_cd = true
+max_contacts_reported = 1000
+contact_monitor = true
 script = ExtResource("1_h3b6x")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.0104729, 0.00499433, -0.00533226, 0.00428086, -6.11959e-10, 0.0149473, -0.00399919, 0.0130789, 0.00203619, 2.91038e-11, 0, -2.91038e-11)
-shape = SubResource("CylinderShape3D_a5ppt")
+[node name="Area" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.0174548, 0.00713476, -0.00666532, 0.00713476, -5.38659e-10, 0.0186841, -0.00666532, 0.0186841, 0.00254524, -0.00246752, 0, -0.00394806)
+shape = SubResource("CapsuleShape3D_l3qmr")
 
 [node name="AmmoSniper2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.86841, 0.713476, -3.1187e-08, 0, -8.74228e-08, -2, -0.713476, 1.86841, -8.16708e-08, -0.000476062, 0.000470221, 0.000351787)
+transform = Transform3D(14.0131, 5.35107, -2.33903e-07, 0, -6.55671e-07, -15, -5.35107, 14.0131, -6.12531e-07, -0.000476062, 0.000470221, 0.000351787)
 mesh = ExtResource("2_s01xh")
 skeleton = NodePath("")
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true

@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://di1uqu7umsbpl"]
+
+[ext_resource type="Texture2D" uid="uid://8koykmocxcjw" path="res://assets/1022053-200.png" id="1_m1qep"]
+
+[node name="crosshair" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 10.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_left = 575.0
+offset_top = 325.0
+offset_right = 595.0
+offset_bottom = 345.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CenterContainer"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_m1qep")

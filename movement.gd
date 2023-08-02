@@ -33,9 +33,8 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("shoot"):
 		state_machine.travel("shoot")
 		var bullet = BulletScene.instantiate()
-		get_node("finger").add_child(bullet)
-		bullet.position = get_node("finger/RIG-finger/Skeleton3D/finger2/muzzle").position
-		#bullet.look_at($finger/cam_cast.get_collision_point(), Vector3.UP)
+		get_node("..").add_child(bullet)
+		bullet.global_transform = get_node("finger/RIG-finger/Skeleton3D/finger2/muzzle").global_transform
 	else:
 		state_machine.travel("idle")
 	if direction:
