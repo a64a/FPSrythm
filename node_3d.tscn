@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dley2n77nhclo"]
+
+[ext_resource type="Script" path="res://Area3D.gd" id="1_qhei4"]
+[ext_resource type="ArrayMesh" uid="uid://d00q70aw60bsh" path="res://addons/kenney_weapon-pack/Models/ammo_sniper.obj" id="2_0hjq5"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_di7p0"]
+height = 1.47986
+radius = 0.212754
+
+[node name="Bullet" type="Node3D"]
+
+[node name="Bullet" type="Area3D" parent="."]
+script = ExtResource("1_qhei4")
+
+[node name="Bullet" type="MeshInstance3D" parent="Bullet"]
+transform = Transform3D(1, 0, 0, 0, 1.54, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("2_0hjq5")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bullet"]
+transform = Transform3D(-0.022, 0, 0, 0, 0.022, 0, 0, 0, 0.022, 0, 0, 0)
+shape = SubResource("CylinderShape3D_di7p0")
