@@ -38,6 +38,10 @@ func _physics_process(delta):
 		await get_tree().create_timer(1).timeout
 	else:
 		state_machine.travel("idle")
+	if Input.is_action_just_pressed("punch"):
+		state_machine.travel("punch")
+	else:
+		state_machine.travel("idle")
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED

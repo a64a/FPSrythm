@@ -11,7 +11,7 @@ height = 0.06
 script = ExtResource("1_h3b6x")
 
 [node name="AmmoSniper2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1.86841, 0.713476, -3.1187e-08, 0, -8.74228e-08, -2, -0.713476, 1.86841, -8.16707e-08, -0.000476062, 0.000470221, 0.000351787)
+transform = Transform3D(1.86841, 0.713476, -3.1187e-08, 0, -8.74228e-08, -2, -0.713476, 1.86841, -8.16708e-08, -0.000476062, 0.000470221, 0.000351787)
 mesh = ExtResource("2_s01xh")
 skeleton = NodePath("")
 
