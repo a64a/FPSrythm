@@ -4,6 +4,7 @@ extends CharacterBody3D
 @onready var state_machine = $finger/AnimationPlayer/AnimationTree.get("parameters/playback")
 @export var muzzle_velocity = 25
 @export var g = Vector3.DOWN * 20
+@onready var BulletScene = load("res://Bullet.tscn")
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -29,14 +30,12 @@ func _physics_process(delta):
 		velocity.y = JUMP_VELOCITY
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if Input.is_action_just_pressed("punch"):
-		state_machine.travel("punch")
 	if Input.is_action_just_pressed("shoot"):
 		state_machine.travel("shoot")
-		var b = Bullet.instance()
-		owner.add_child(b)
-		b.transform = $finger2.global_transform
-		b.velocity = -b.transform.basis.z * b.muzzle_velocity
+		var bullet = BulletScene.instantiate()
+		get_node("finger").add_child(bullet)
+		bullet.position = get_node("finger/RIG-finger/Skeleton3D/finger2/muzzle").position
+		await get_tree().create_timer(1).timeout
 	else:
 		state_machine.travel("idle")
 	if direction:
