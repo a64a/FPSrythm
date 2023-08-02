@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://xdj7dhnho068"]
+[gd_scene load_steps=15 format=3 uid="uid://xdj7dhnho068"]
 
 [ext_resource type="PackedScene" uid="uid://crnrnqimmb3wn" path="res://Player.tscn" id="1_dgoaf"]
 [ext_resource type="Texture2D" uid="uid://gmd3xc12sh8u" path="res://addons/kenney_prototype_textures/dark/texture_05.png" id="1_qt6v1"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://d3ft6cqmm86vd" path="res://animations.tscn" id="4_jnlb4"]
 [ext_resource type="Texture2D" uid="uid://dggjlfgh3aj4m" path="res://addons/kenney_prototype_textures/orange/texture_01.png" id="4_m7vld"]
 [ext_resource type="ArrayMesh" uid="uid://cx52bwliuoybv" path="res://assets/17309_Bass_drum_v1.obj" id="5_52eov"]
-[ext_resource type="PackedScene" uid="uid://dley2n77nhclo" path="res://node_3d.tscn" id="7_51n2e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x58i5"]
 size = Vector3(100, 0.2, 100)
@@ -23,6 +22,12 @@ albedo_texture = ExtResource("4_m7vld")
 
 [sub_resource type="Skin" id="Skin_bsqxa"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_m6yxc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gbmns"]
+
+[sub_resource type="PlaceholderMesh" id="PlaceholderMesh_ywct4"]
+
 [node name="Root" type="Node"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -36,23 +41,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0243149, -1, 0.0653801)
 material_override = SubResource("StandardMaterial3D_gt3tk")
 mesh = SubResource("BoxMesh_soirp")
 
-[node name="CharacterBody3D" parent="." instance=ExtResource("1_dgoaf")]
+[node name="Player" parent="." instance=ExtResource("1_dgoaf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36547, -0.0528066)
 script = ExtResource("3_lua15")
 muzzle_velocity = 25
 g = Vector3(0, -20, 0)
 sens = 0.5
 
-[node name="finger" parent="CharacterBody3D" instance=ExtResource("4_jnlb4")]
+[node name="finger" parent="Player" instance=ExtResource("4_jnlb4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.10485, -0.377189)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 8.41002, 3.72091)
 
 [node name="17309BassDrumV1" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.035, 0, 0, 0, -1.5299e-09, -0.035, 0, 0.035, -1.5299e-09, 0, 0.322101, -10.6735)
+transform = Transform3D(0.035, 0, 0, 0, -1.5299e-09, -0.035, 0, 0.035, -1.5299e-09, -0.0262957, 0.374877, -10.7369)
 material_override = SubResource("StandardMaterial3D_8l47y")
 mesh = ExtResource("5_52eov")
 skin = SubResource("Skin_bsqxa")
 
-[node name="Bullet" parent="." instance=ExtResource("7_51n2e")]
+[node name="StaticBody3D2" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.026, -1.70008, -10.737)
+shape = SubResource("CylinderShape3D_m6yxc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.026, -1.70008, -10.737)
+shape = SubResource("CylinderShape3D_gbmns")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05407, -2.7225)
+mesh = SubResource("PlaceholderMesh_ywct4")

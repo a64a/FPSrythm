@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://crnrnqimmb3wn"]
+[gd_scene load_steps=3 format=3 uid="uid://crnrnqimmb3wn"]
 
 [sub_resource type="GDScript" id="GDScript_xnk4v"]
 script/source = "extends CharacterBody3D
@@ -34,8 +34,6 @@ func _physics_process(delta):
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tipje"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_yb4vi"]
-
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = SubResource("GDScript_xnk4v")
 
@@ -43,7 +41,3 @@ script = SubResource("GDScript_xnk4v")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_tipje")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00436473, 2.38419e-07, -0.0108843)
-mesh = SubResource("CapsuleMesh_yb4vi")
