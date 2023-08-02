@@ -1,7 +1,6 @@
 extends Area3D
 
-var speed : float = 30.0
-var damage : int = 1
+var speed : float = 10.0
 
 func _physics_process(delta):
 	var forward_dir = global_transform.basis.z.normalized()
@@ -10,5 +9,5 @@ func _physics_process(delta):
 func destroy():
 	queue_free()
 
-func _on_body_entered(body):
-	pass
+func _on_body_entered(_body):
+	print("a")
