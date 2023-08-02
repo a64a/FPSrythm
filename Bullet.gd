@@ -1,7 +1,10 @@
 extends RigidBody3D
 
-var velocity : float = 400.0
+var velocity : float = 75.0
 var a 
+
+func body_entered(body):
+	body.add_collision_exception_with("../Player")
 
 func _physics_process(delta):
 	var forward_dir = global_transform.basis.z.normalized()
@@ -11,8 +14,6 @@ func _integrate_forces(_state):
 	var collision = get_contact_count()
 	if collision >= 1:
 		queue_free()
-		is_instance_valid(a)
-		print(a)
 
 func look_follow(state, current_transform, target_position):
 	var up_dir = Vector3(0, 1, 0)
