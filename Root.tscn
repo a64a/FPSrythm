@@ -1,24 +1,30 @@
-[gd_scene load_steps=9 format=3 uid="uid://xdj7dhnho068"]
+[gd_scene load_steps=10 format=3 uid="uid://xdj7dhnho068"]
 
 [ext_resource type="PackedScene" uid="uid://crnrnqimmb3wn" path="res://Player.tscn" id="1_dgoaf"]
-[ext_resource type="Texture2D" uid="uid://gmd3xc12sh8u" path="res://addons/kenney_prototype_textures/dark/texture_05.png" id="1_qt6v1"]
+[ext_resource type="Texture2D" uid="uid://crp7432j80hnh" path="res://addons/kenney_prototype_textures/dark/texture_05.png" id="1_ua6y4"]
 [ext_resource type="PackedScene" uid="uid://d3ft6cqmm86vd" path="res://animations.tscn" id="4_jnlb4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x58i5"]
 size = Vector3(100, 0.2, 100)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gt3tk"]
-albedo_texture = ExtResource("1_qt6v1")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dec5"]
+albedo_texture = ExtResource("1_ua6y4")
+uv1_scale = Vector3(1.81, 1.81, 1.81)
 uv1_triplanar = true
+uv1_triplanar_sharpness = 0.5
+uv1_world_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_soirp"]
 size = Vector3(100, 0.2, 100)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wuxqv"]
+
 [sub_resource type="CylinderMesh" id="CylinderMesh_qnysi"]
+lightmap_size_hint = Vector2i(17, 19)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_gbmns"]
-height = 2.30755
-radius = 0.691203
+height = 2.08576
+radius = 0.507609
 
 [node name="Root" type="Node"]
 
@@ -32,7 +38,7 @@ shape = SubResource("BoxShape3D_x58i5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0243149, -1, 0.0653801)
-material_override = SubResource("StandardMaterial3D_gt3tk")
+material_override = SubResource("StandardMaterial3D_4dec5")
 mesh = SubResource("BoxMesh_soirp")
 
 [node name="Player" parent="." instance=ExtResource("1_dgoaf")]
@@ -45,21 +51,28 @@ floor_snap_length = 0.2
 [node name="finger" parent="Player" instance=ExtResource("4_jnlb4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.05822, 0.0528066)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 8.41002, 3.72091)
-
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05407, -2.7225)
 collision_layer = 3
+mass = 0.01
 continuous_cd = true
 max_contacts_reported = 1000
 contact_monitor = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-transform = Transform3D(2.02, 0, 0, 0, 2.02, 0, 0, 0, 2.02, -0.026, -0.352198, -0.420449)
+transform = Transform3D(2.02, 0, 0, 0, 2.02, 0, 0, 0, 2.02, -0.03, -0.4, -0.4)
+material_override = SubResource("StandardMaterial3D_wuxqv")
 mesh = SubResource("CylinderMesh_qnysi")
 skeleton = NodePath("../CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.026, -0.352198, -0.420449)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.05, -0.4, -0.4)
 shape = SubResource("CylinderShape3D_gbmns")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.9816, 3.70801)
+light_color = Color(0.733333, 0.227451, 0, 1)
+light_energy = 40.27
+light_indirect_energy = 26.1
+light_bake_mode = 0
+omni_range = 40.0

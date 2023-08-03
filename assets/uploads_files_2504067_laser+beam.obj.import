@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://gexc0almcmlt"
+path="res://.godot/imported/uploads_files_2504067_laser+beam.obj-c5bf7569e781b2666b7ca15ba56df6fe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/uploads_files_2504067_laser+beam.obj-c5bf7569e781b2666b7ca15ba56df6fe.mesh"]
+
+source_file="res://assets/uploads_files_2504067_laser+beam.obj"
+dest_files=["res://.godot/imported/uploads_files_2504067_laser+beam.obj-c5bf7569e781b2666b7ca15ba56df6fe.mesh", "res://.godot/imported/uploads_files_2504067_laser+beam.obj-c5bf7569e781b2666b7ca15ba56df6fe.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
