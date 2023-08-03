@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://otdolm7x0rkd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8qno8"]
+albedo_color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_4t5x2"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.135, 0, -1.18021e-08, 0, 0.135, 0, 1.18021e-08, 0, -0.135, 0, 0, -0.002)
+material_overlay = SubResource("StandardMaterial3D_8qno8")
+mesh = SubResource("QuadMesh_4t5x2")
