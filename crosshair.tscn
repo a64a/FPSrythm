@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://di1uqu7umsbpl"]
+[gd_scene load_steps=4 format=3 uid="uid://di1uqu7umsbpl"]
 
-[ext_resource type="Texture2D" uid="uid://bla2ge568h4q3" path="res://unnamed.png" id="1_a0pwr"]
+[ext_resource type="Texture2D" uid="uid://bla2ge568h4q3" path="res://assets/unnamed.png" id="1_aqchm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6y8l"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k2u6e"]
 load_path = "res://.godot/imported/1022053-200.png-b3a218dc2025a6a90356d54d9a8a372d.s3tc.ctex"
 
-[node name="crosshair" type="Control"]
+[node name="Ui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,10 +27,11 @@ offset_right = 595.0
 offset_bottom = 345.0
 
 [node name="Sprite2D" type="Sprite2D" parent="CenterContainer"]
+material = SubResource("ShaderMaterial_k6y8l")
 scale = Vector2(0.25, 0.25)
 texture = SubResource("CompressedTexture2D_k2u6e")
 
 [node name="Weapon" type="Sprite2D" parent="CenterContainer"]
 position = Vector2(435, 227)
 scale = Vector2(0.11, 0.11)
-texture = ExtResource("1_a0pwr")
+texture = ExtResource("1_aqchm")

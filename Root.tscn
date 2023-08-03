@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://crnrnqimmb3wn" path="res://Player.tscn" id="1_dgoaf"]
 [ext_resource type="Texture2D" uid="uid://crp7432j80hnh" path="res://addons/kenney_prototype_textures/dark/texture_05.png" id="1_ua6y4"]
-[ext_resource type="PackedScene" uid="uid://dmodbybmjuugd" path="res://blender/assets.tscn" id="4_8p5xd"]
 [ext_resource type="Texture2D" uid="uid://17447nemcu3o" path="res://addons/kenney_prototype_textures/light/texture_08.png" id="4_hra6u"]
 [ext_resource type="PackedScene" uid="uid://d3ft6cqmm86vd" path="res://animations.tscn" id="4_jnlb4"]
+[ext_resource type="PackedScene" uid="uid://c0ym0duyug5ab" path="res://assets.tscn" id="5_8upcf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x58i5"]
 size = Vector3(100, 0.2, 100)
@@ -36,8 +36,8 @@ radius = 0.507609
 [node name="Root" type="Node"]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-collision_layer = 3
-collision_mask = 2
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
@@ -49,7 +49,7 @@ material_override = SubResource("StandardMaterial3D_4dec5")
 mesh = SubResource("BoxMesh_soirp")
 
 [node name="Player" parent="." instance=ExtResource("1_dgoaf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36547, -0.0528066)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36547, 2.24344)
 collision_layer = 2
 collision_mask = 2
 floor_constant_speed = true
@@ -58,7 +58,7 @@ floor_snap_length = 0.2
 [node name="finger" parent="Player" instance=ExtResource("4_jnlb4")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.05822, 0.0528066)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05407, -2.7225)
 collision_layer = 3
 mass = 0.01
@@ -84,5 +84,5 @@ light_indirect_energy = 26.1
 light_bake_mode = 0
 omni_range = 40.0
 
-[node name="finger" parent="." instance=ExtResource("4_8p5xd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0497, 0, 0)
+[node name="finger2" parent="." groups=["enemy"] instance=ExtResource("5_8upcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
