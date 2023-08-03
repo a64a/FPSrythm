@@ -49,7 +49,7 @@ func ray_check(no_ray):
 	if no_ray == ray1:
 		await get_tree().create_timer(0.045).timeout
 	else:
-		await get_tree().create_timer(0.25).timeout
+		await get_tree().create_timer(0.35).timeout
 	no_ray.add_exception(get_node("."))
 	var collider = no_ray.get_collider()
 	var truth_check = is_instance_valid(collider)
@@ -57,7 +57,7 @@ func ray_check(no_ray):
 		collider.queue_free()
 	else:
 		var b = hole.instantiate()
-		get_tree().get_root().add_child(b)
+		collider.add_child(b)
 		b.global_transform.origin = no_ray.get_collision_point()
 		var surface_dir_up = Vector3(0,1,0)
 		var surface_dir_down = Vector3(0,-1,0)
