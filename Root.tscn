@@ -76,3 +76,27 @@ light_energy = 40.27
 light_indirect_energy = 26.1
 light_bake_mode = 0
 omni_range = 40.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 13.9816, -6.05654)
+light_color = Color(0.733333, 0.227451, 0, 1)
+light_energy = 40.27
+light_indirect_energy = 26.1
+light_bake_mode = 0
+omni_range = 40.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 9.80268, 13.9816, -6.05654)
+light_color = Color(0.733333, 0.227451, 0, 1)
+light_energy = 40.27
+light_indirect_energy = 26.1
+light_bake_mode = 0
+omni_range = 40.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -9.43091, 13.9816, -6.05654)
+light_color = Color(0.733333, 0.227451, 0, 1)
+light_energy = 40.27
+light_indirect_energy = 26.1
+light_bake_mode = 0
+omni_range = 40.0
