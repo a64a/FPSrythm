@@ -5,9 +5,11 @@ extends CharacterBody3D
 @export var muzzle_velocity = 25
 @export var g = Vector3.DOWN * 20
 @onready var BulletScene = load("res://Bullet.tscn")
+@onready var raycast = get_node("finger/RIG-finger/Skeleton3D/finger2/RayCast3D")
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+var a
 
 @export var sens = 0.5
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -31,10 +33,13 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if Input.is_action_just_pressed("shoot"):
+		raycast.add_exception(get_node("."))
 		state_machine.travel("shoot")
 		var bullet = BulletScene.instantiate()
-		get_node("..").add_child(bullet)
+		get_node(".").add_child(bullet)
 		bullet.global_transform = get_node("finger/RIG-finger/Skeleton3D/finger2/muzzle").global_transform
+		var collider = raycast.get_collider()
+		
 	else:
 		state_machine.travel("idle")
 	if direction:
