@@ -41,7 +41,7 @@ jobs:
       image: barichello/godot-ci:4.1
     steps:
       - uses: actions/checkout@v3
-      - run: mkdir -p ~/.local/share/godot/ build/linux/
+      - run: mkdir -p ~/.local/share/godot/ build/macos/
       - run: mv /root/.local/share/godot/templates ~/.local/share/godot/export_templates
       - run: godot --export-release --headless "macOS"
       - name: Publish artifacts
