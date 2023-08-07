@@ -1,0 +1,36 @@
+# build game using godot and publish artifacts
+
+name: Godot CI
+on: [push]
+
+jobs:
+  build-win:
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.1
+    steps:
+      - uses: actions/checkout@v3
+      - run: mkdir -p ~/.local/share/godot/ build/windows/
+      - run: mv /root/.local/share/godot/templates ~/.local/share/godot/export_templates
+      - run: godot --export-release --headless "Windows Desktop"
+      - uses: actions/upload-artifact@v3
+        with:
+          name: windows
+          path: build/windows/
+          if-no-files-found: error
+
+  build-linux:
+    runs-on: ubuntu-20.04
+    container:
+      image: barichello/godot-ci:4.1
+    steps:
+      - uses: actions/checkout@v3
+      - run: mkdir -p ~/.local/share/godot/ build/linux/
+      - run: mv /root/.local/share/godot/templates ~/.local/share/godot/export_templates
+      - run: godot --export-release --headless "Linux/X11"
+      - name: Publish artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: linux
+          path: build/linux/
+          if-no-files-found: error
