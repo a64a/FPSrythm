@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://otdolm7x0rkd"]
 
-[ext_resource type="Texture2D" uid="uid://q4nitro6hunx" path="res://assets/3006.png" id="1_24c1h"]
+[ext_resource type="Texture2D" uid="uid://bnnp6p02sc0hv" path="res://assets/3006.png" id="1_24c1h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ec180"]
 transparency = 1
@@ -11,6 +11,6 @@ albedo_texture = ExtResource("1_24c1h")
 [node name="Node3D" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.135, 0, -1.18021e-08, 0, 0.135, 0, 1.18021e-08, 0, -0.135, 0, 0, -0.002)
+transform = Transform3D(-0.135, 0, -1.18021e-08, 0, 0.135, 0, 1.18021e-08, 0, -0.135, 0, 0, -0.00115788)
 material_override = SubResource("StandardMaterial3D_ec180")
 mesh = SubResource("QuadMesh_4t5x2")

@@ -7,7 +7,7 @@ extends CharacterBody3D
 @onready var ray2 = get_node("finger/RIG-finger/RayCast3D2")
 @onready var hole = preload("res://bullethole.tscn")
 @onready var crosshair = get_node("finger/Camera3D/crosshair/CenterContainer/Sprite2D")
-@onready var weapon = get_node("finger/Camera3D/crosshair/CenterContainer/Weapon")
+@onready var weapon = get_node("finger/Camera3D/crosshair/Container/Weapon")
 @onready var camera = get_node("finger/Camera3D")
 
 var SPEED
@@ -43,7 +43,6 @@ func cooldowns():
 	else:
 		shoot = false
 
-
 func ray_check(no_ray):
 	ammo -= 1
 	if no_ray == ray1:
@@ -70,14 +69,24 @@ func ray_check(no_ray):
 		await get_tree().create_timer(0.145).timeout
 
 func collision_check(a, b):
-	if ray1.is_colliding():
-		ray_check(ray1)
-	if ray2.is_colliding():
-		ray_check(ray2)
-	weapon.texture = load(a)
-	await get_tree().create_timer(0.35).timeout
-	weapon.texture = load(b)
-	shoot = false
+	var origin = ray1.global_transform.origin
+	var collision_point = ray1.get_collision_point()
+	var distance1 = origin.distance_to(collision_point)
+	origin = ray2.global_transform.origin
+	collision_point = ray2.get_collision_point()
+	var distance2 = origin.distance_to(collision_point)
+	if distance1 < 1 or distance2 < 1:
+		state_machine.travel("punch left")
+	else:
+		state_machine.travel("shoot")
+		if ray1.is_colliding():
+			ray_check(ray1)
+		if ray2.is_colliding():
+			ray_check(ray2)
+		weapon.texture = load(a)
+		await get_tree().create_timer(0.35).timeout
+		weapon.texture = load(b)
+		shoot = false
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -93,13 +102,13 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if Input.is_action_just_pressed("shoot") and shoot==true:
-		state_machine.travel("shoot")
 		if ray1.is_colliding() or ray2.is_colliding():
 			collision_check("res://assets/IMG-0301.PNG", "res://assets/IMG-0300.PNG")
-	elif Input.is_action_just_pressed("punch"):
-		state_machine.travel("punch_left")
 	elif Input.is_action_just_pressed("reload") and shoot==false:
+		state_machine.travel("pause")
 		cooldowns()
+		await get_tree().create_timer(1).timeout
+		return 0
 	else:
 		state_machine.travel("idle")
 	if Input.is_action_pressed("dash"):
