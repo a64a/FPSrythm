@@ -77,7 +77,7 @@ floor_constant_speed = true
 floor_snap_length = 0.2
 
 [node name="head" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(0.605, 0, 0, 0, 0.605, 0, 0, 0, 0.605, 0, 0.632742, 0)
+transform = Transform3D(0.605, 0, 0, 0, 0.605, 0, 0, 0, 0.605, -0.00070715, 0.62479, -0.00265503)
 shape = SubResource("SphereShape3D_6whbs")
 script = ExtResource("3_yl3uw")
 

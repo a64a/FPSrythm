@@ -41,12 +41,12 @@ func cooldowns():
 		crosshair.texture = load("res://assets/Barrier.png")
 		crosshair.scale = s
 		await get_tree().create_timer(1).timeout
-		shoot = true
 		crosshair.texture = load("res://.godot/imported/1022053-200.png-b3a218dc2025a6a90356d54d9a8a372d.s3tc.ctex")
 		s.x = 0.25
 		s.y = 0.25
 		crosshair.scale = s
 		weapon.texture = load("res://assets/unnamed.png")
+		shoot = true
 	else:
 		shoot = false
 
@@ -85,6 +85,7 @@ func collision_check(a, b):
 	if distance1 < 1 or distance2 < 1:
 		state_machine.travel("punch left")
 	else:
+		shoot = false
 		state_machine.travel("shoot")
 		if ray1.is_colliding():
 			ray_check(ray1)
@@ -93,7 +94,6 @@ func collision_check(a, b):
 		weapon.texture = load(a)
 		await get_tree().create_timer(0.35).timeout
 		weapon.texture = load(b)
-		shoot = false
 
 func _input(event):
 	if event is InputEventMouseMotion:
