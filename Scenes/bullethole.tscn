@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://otdolm7x0rkd"]
 
-[ext_resource type="Texture2D" uid="uid://bnnp6p02sc0hv" path="res://assets/3006.png" id="1_24c1h"]
+[ext_resource type="Texture2D" uid="uid://bnnp6p02sc0hv" path="res://assets/3006.png" id="1_y44se"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ec180"]
 transparency = 1
-albedo_texture = ExtResource("1_24c1h")
+albedo_texture = ExtResource("1_y44se")
 
 [sub_resource type="QuadMesh" id="QuadMesh_4t5x2"]
 

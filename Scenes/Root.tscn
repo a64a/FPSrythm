@@ -1,0 +1,121 @@
+[gd_scene load_steps=18 format=3 uid="uid://xdj7dhnho068"]
+
+[ext_resource type="Texture2D" uid="uid://crp7432j80hnh" path="res://addons/kenney_prototype_textures/dark/texture_05.png" id="1_uyohc"]
+[ext_resource type="PackedScene" uid="uid://crnrnqimmb3wn" path="res://Scenes/Player.tscn" id="2_vaj04"]
+[ext_resource type="PackedScene" uid="uid://d3ft6cqmm86vd" path="res://Scenes/animations.tscn" id="3_8w24e"]
+[ext_resource type="Script" path="res://Scenes/head.gd" id="3_yl3uw"]
+[ext_resource type="Texture2D" uid="uid://17447nemcu3o" path="res://addons/kenney_prototype_textures/light/texture_08.png" id="4_p71ox"]
+[ext_resource type="PackedScene" uid="uid://celg4cwluy66t" path="res://Scenes/shooting range.tscn" id="5_2hv7x"]
+[ext_resource type="PackedScene" uid="uid://bmmt0ke1e6ykj" path="res://Scenes/hay.tscn" id="5_56gpq"]
+
+[sub_resource type="Sky" id="Sky_1gd3a"]
+
+[sub_resource type="Environment" id="Environment_57f50"]
+background_energy_multiplier = 0.65
+sky = SubResource("Sky_1gd3a")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qcjjv"]
+exposure_multiplier = 1.065
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x58i5"]
+size = Vector3(100, 0.2, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dec5"]
+albedo_texture = ExtResource("1_uyohc")
+uv1_scale = Vector3(1.81, 1.81, 1.81)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 0.5
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_soirp"]
+size = Vector3(100, 0.2, 100)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6whbs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_23pib"]
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("4_p71ox")
+metallic = 0.3
+metallic_specular = 0.0
+roughness = 0.62
+uv1_scale = Vector3(0.1, 0, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qnysi"]
+lightmap_size_hint = Vector2i(17, 19)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gbmns"]
+height = 2.08576
+radius = 0.507609
+
+[node name="Root" type="Node"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_57f50")
+camera_attributes = SubResource("CameraAttributesPractical_qcjjv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+shape = SubResource("BoxShape3D_x58i5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0364709, -0.822962, -0.0038209)
+material_override = SubResource("StandardMaterial3D_4dec5")
+mesh = SubResource("BoxMesh_soirp")
+
+[node name="Player" parent="." instance=ExtResource("2_vaj04")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74518, 6.74445)
+collision_layer = 2
+collision_mask = 2
+floor_constant_speed = true
+floor_snap_length = 0.2
+
+[node name="head" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(0.605, 0, 0, 0, 0.605, 0, 0, 0, 0.605, 0, 0.632742, 0)
+shape = SubResource("SphereShape3D_6whbs")
+script = ExtResource("3_yl3uw")
+
+[node name="finger" parent="Player/head" instance=ExtResource("3_8w24e")]
+transform = Transform3D(-1.65289, 0, -1.445e-07, 0, 1.65289, 0, 1.445e-07, 0, -1.65289, 0, -2.94949, -0.406102)
+
+[node name="RigidBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83984, -0.318797)
+collision_layer = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+transform = Transform3D(1.06, 0, 0, 0, 1.06, 0, 0, 0, 1.06, -0.03, -0.58734, -0.4)
+material_override = SubResource("StandardMaterial3D_23pib")
+mesh = SubResource("CylinderMesh_qnysi")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1.06, 0, 0, 0, 1.06, 0, 0, 0, 1.06, -0.0339296, -0.619183, -0.398353)
+shape = SubResource("CylinderShape3D_gbmns")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.337615, 2.33707, 1.74237)
+light_color = Color(0.937255, 0.301961, 0, 1)
+light_energy = 7.94
+light_indirect_energy = 26.1
+light_volumetric_fog_energy = 1.68
+light_specular = 1.01
+shadow_bias = 10.0
+shadow_normal_bias = 1.2
+shadow_reverse_cull_face = true
+shadow_transmittance_bias = 4.907
+shadow_blur = 10.0
+distance_fade_enabled = true
+distance_fade_begin = 69.7
+omni_range = 40.0
+
+[node name="finger" parent="." instance=ExtResource("5_2hv7x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0743561, -0.204899, -0.0727863)
+
+[node name="Node3D" parent="." instance=ExtResource("5_56gpq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159889, 1.83984, 3.60287)
