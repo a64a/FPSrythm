@@ -1,8 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://di1uqu7umsbpl"]
+[gd_scene load_steps=6 format=3 uid="uid://di1uqu7umsbpl"]
 
-[ext_resource type="Texture2D" uid="uid://8koykmocxcjw" path="res://assets/1022053-200.png" id="1_m1qep"]
+[ext_resource type="Texture2D" uid="uid://8eewak3dypxu" path="res://assets/unnamed.png" id="1_aqchm"]
+[ext_resource type="Texture2D" uid="uid://bci6sk4xx4nmn" path="res://assets/healthbar.png" id="2_2pmcu"]
 
-[node name="crosshair" type="Control"]
+[sub_resource type="GDScript" id="GDScript_573kq"]
+script/source = "extends Control
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k6y8l"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k2u6e"]
+load_path = "res://.godot/imported/1022053-200.png-b3a218dc2025a6a90356d54d9a8a372d.s3tc.ctex"
+
+[node name="Ui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +23,7 @@ offset_right = 10.0
 offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_573kq")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
@@ -22,5 +33,16 @@ offset_right = 595.0
 offset_bottom = 345.0
 
 [node name="Sprite2D" type="Sprite2D" parent="CenterContainer"]
+material = SubResource("ShaderMaterial_k6y8l")
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("1_m1qep")
+texture = SubResource("CompressedTexture2D_k2u6e")
+
+[node name="Weapon" type="Sprite2D" parent="CenterContainer"]
+position = Vector2(435, 163)
+scale = Vector2(0.11, 0.11)
+texture = ExtResource("1_aqchm")
+
+[node name="Healthbar" type="Sprite2D" parent="."]
+position = Vector2(963, 611)
+scale = Vector2(0.14, 0.14)
+texture = ExtResource("2_2pmcu")

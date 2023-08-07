@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0ym0duyug5ab"]
+
+[ext_resource type="PackedScene" uid="uid://d1jnd0ctlgit" path="res://blender/finger.glb" id="2_l5tuv"]
+
+[node name="StaticBody3D" type="StaticBody3D"]
+collision_layer = 7
+collision_mask = 3
+
+[node name="finger2" parent="." instance=ExtResource("2_l5tuv")]
