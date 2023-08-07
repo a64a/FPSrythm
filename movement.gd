@@ -1,15 +1,20 @@
 extends CharacterBody3D
 
-@onready var camera_mount = $finger
-@onready var state_machine = $finger/AnimationPlayer/AnimationTree.get("parameters/playback")
-@export var g = Vector3.DOWN * 20
-@onready var ray1 = get_node("finger/RIG-finger/RayCast3D") 
-@onready var ray2 = get_node("finger/RIG-finger/RayCast3D2")
-@onready var hole = preload("res://bullethole.tscn")
-@onready var crosshair = get_node("finger/Camera3D/crosshair/CenterContainer/Sprite2D")
-@onready var weapon = get_node("finger/Camera3D/crosshair/CenterContainer/Weapon")
-@onready var camera = get_node("finger/Camera3D")
+@onready var camera_mount = $head/finger
+@onready var state_machine = $head/finger/AnimationPlayer/AnimationTree.get("parameters/playback")
+@onready var ray1 = get_node("head/finger/RIG-finger/RayCast3D") 
+@onready var ray2 = get_node("head/finger/RIG-finger/RayCast3D2")
+@onready var hole = preload("res://Scenes/bullethole.tscn")
+@onready var crosshair = get_node("head/finger/Camera3D/crosshair/CenterContainer/Sprite2D")
+@onready var weapon = get_node("head/finger/Camera3D/crosshair/Container/Weapon")
+@onready var camera = get_node("head/finger/Camera3D")
+@onready var guncam = get_node("head/finger/Camera3D/SubViewportContainer/SubViewport/Camera3D")
+@onready var _original_camera_translation: Vector3 = camera.transform.origin
 
+@export var g = Vector3.DOWN * 20
+@export var sens = 0.5
+
+var _delta := 0.0
 var SPEED
 var walk = 5.0
 var sprint = 7.0
@@ -17,15 +22,17 @@ var JUMP_VELOCITY = 4.5
 var shoot = true
 var s = Vector2()
 var ammo = 2
+var t_bob = 0.0
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 const freq = 2.0
 const amp = 0.08
-var t_bob = 0.0
-
-@export var sens = 0.5
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _process(_delta):
+	guncam.global_transform = camera.global_transform
 
 func cooldowns():
 	if shoot == false:
@@ -34,22 +41,21 @@ func cooldowns():
 		crosshair.texture = load("res://assets/Barrier.png")
 		crosshair.scale = s
 		await get_tree().create_timer(1).timeout
-		shoot = true
 		crosshair.texture = load("res://.godot/imported/1022053-200.png-b3a218dc2025a6a90356d54d9a8a372d.s3tc.ctex")
 		s.x = 0.25
 		s.y = 0.25
 		crosshair.scale = s
 		weapon.texture = load("res://assets/unnamed.png")
+		shoot = true
 	else:
 		shoot = false
-
 
 func ray_check(no_ray):
 	ammo -= 1
 	if no_ray == ray1:
 		await get_tree().create_timer(0.045).timeout
 	else:
-		await get_tree().create_timer(0.35).timeout
+		await get_tree().create_timer(0.25).timeout
 	no_ray.add_exception(get_node("."))
 	var collider = no_ray.get_collider()
 	var truth_check = is_instance_valid(collider)
@@ -57,7 +63,7 @@ func ray_check(no_ray):
 		collider.queue_free()
 	else:
 		var b = hole.instantiate()
-		collider.add_child(b)
+		get_tree().get_root().add_child(b)
 		b.global_transform.origin = no_ray.get_collision_point()
 		var surface_dir_up = Vector3(0,1,0)
 		var surface_dir_down = Vector3(0,-1,0)
@@ -70,20 +76,29 @@ func ray_check(no_ray):
 		await get_tree().create_timer(0.145).timeout
 
 func collision_check(a, b):
-	if ray1.is_colliding():
-		ray_check(ray1)
-	if ray2.is_colliding():
-		ray_check(ray2)
-	weapon.texture = load(a)
-	await get_tree().create_timer(0.35).timeout
-	weapon.texture = load(b)
-	shoot = false
+	var origin = ray1.global_transform.origin
+	var collision_point = ray1.get_collision_point()
+	var distance1 = origin.distance_to(collision_point)
+	origin = ray2.global_transform.origin
+	collision_point = ray2.get_collision_point()
+	var distance2 = origin.distance_to(collision_point)
+	if distance1 < 1 or distance2 < 1:
+		state_machine.travel("punch left")
+	else:
+		shoot = false
+		state_machine.travel("shoot")
+		if ray1.is_colliding():
+			ray_check(ray1)
+		if ray2.is_colliding():
+			ray_check(ray2)
+		weapon.texture = load(a)
+		await get_tree().create_timer(0.35).timeout
+		weapon.texture = load(b)
 
 func _input(event):
 	if event is InputEventMouseMotion:
-		var xRot = clamp(rotation.x - event.relative.y /1000 * 5, -1.5, 1)
 		var yRot = rotation.y - event.relative.x / 1000 * 5
-		rotation = Vector3(xRot, yRot, 0)
+		rotation = Vector3(0, yRot, 0)
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -93,13 +108,15 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if Input.is_action_just_pressed("shoot") and shoot==true:
-		state_machine.travel("shoot")
 		if ray1.is_colliding() or ray2.is_colliding():
 			collision_check("res://assets/IMG-0301.PNG", "res://assets/IMG-0300.PNG")
-	elif Input.is_action_just_pressed("punch"):
-		state_machine.travel("punch_left")
 	elif Input.is_action_just_pressed("reload") and shoot==false:
+		state_machine.travel("pause")
 		cooldowns()
+		await get_tree().create_timer(1).timeout
+		return 0
+	elif Input.is_action_just_pressed("pause"):
+		get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 	else:
 		state_machine.travel("idle")
 	if Input.is_action_pressed("dash"):
@@ -116,14 +133,10 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 3.0)
-		
-		t_bob += delta * velocity.length() * float(is_on_floor())
-		camera.transform.origin * _headbob(t_bob)
 	move_and_slide()
-
-func _headbob(time) -> Vector3:
-	var pos = Vector3.ZERO
-	pos.y = sin(time * freq) * amp
-	pos.x = cos(time + freq / 2.0) * amp
-	return pos
-
+	
+	_delta += delta
+	var input := Vector2.ZERO
+	var camera_bob = floor(abs(input.x) + abs(input.y)) * _delta * 15
+	var target_camera_translation := _original_camera_translation + Vector3.UP * sin(camera_bob) * 0.5
+	camera.transform.origin = camera.transform.origin.lerp(target_camera_translation, delta)

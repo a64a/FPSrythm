@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://di1uqu7umsbpl"]
+[gd_scene load_steps=5 format=3 uid="uid://di1uqu7umsbpl"]
 
 [ext_resource type="Texture2D" uid="uid://8eewak3dypxu" path="res://assets/unnamed.png" id="1_aqchm"]
-[ext_resource type="Texture2D" uid="uid://bci6sk4xx4nmn" path="res://assets/healthbar.png" id="2_2pmcu"]
 
 [sub_resource type="GDScript" id="GDScript_573kq"]
 script/source = "extends Control
@@ -26,23 +25,40 @@ grow_vertical = 2
 script = SubResource("GDScript_573kq")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-layout_mode = 0
-offset_left = 575.0
-offset_top = 325.0
-offset_right = 595.0
-offset_bottom = 345.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="CenterContainer"]
+visibility_layer = 16
 material = SubResource("ShaderMaterial_k6y8l")
 scale = Vector2(0.25, 0.25)
 texture = SubResource("CompressedTexture2D_k2u6e")
 
-[node name="Weapon" type="Sprite2D" parent="CenterContainer"]
-position = Vector2(435, 163)
-scale = Vector2(0.11, 0.11)
-texture = ExtResource("1_aqchm")
+[node name="Container" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
 
-[node name="Healthbar" type="Sprite2D" parent="."]
-position = Vector2(963, 611)
-scale = Vector2(0.14, 0.14)
-texture = ExtResource("2_2pmcu")
+[node name="Weapon" type="Sprite2D" parent="Container"]
+visibility_layer = 16
+position = Vector2(-86, -45)
+scale = Vector2(0.11, 0.11)
+skew = 0.200713
+texture = ExtResource("1_aqchm")
