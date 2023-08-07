@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://crp7432j80hnh" path="res://addons/kenney_prototype_textures/dark/texture_05.png" id="1_ua6y4"]
 [ext_resource type="Texture2D" uid="uid://17447nemcu3o" path="res://addons/kenney_prototype_textures/light/texture_08.png" id="4_hra6u"]
 [ext_resource type="PackedScene" uid="uid://d3ft6cqmm86vd" path="res://animations.tscn" id="4_jnlb4"]
-[ext_resource type="PackedScene" uid="uid://clj7xko30256i" path="res://blender/shooting range.tscn" id="5_o4rw8"]
+[ext_resource type="PackedScene" uid="uid://c0ym0duyug5ab" path="res://assets.tscn" id="5_8upcf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x58i5"]
 size = Vector3(100, 0.2, 100)
@@ -49,17 +49,17 @@ material_override = SubResource("StandardMaterial3D_4dec5")
 mesh = SubResource("BoxMesh_soirp")
 
 [node name="Player" parent="." instance=ExtResource("1_dgoaf")]
-transform = Transform3D(0.815, 0, 0, 0, 0.815, 0, 0, 0, 0.815, 0, 1.05435, 2.24344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.36547, 2.24344)
 collision_layer = 2
 collision_mask = 2
 floor_constant_speed = true
 floor_snap_length = 0.2
 
 [node name="finger" parent="Player" instance=ExtResource("4_jnlb4")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.142015, 0.0528066)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.05822, 0.0528066)
 
-[node name="RigidBody3D" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58761, -0.536913)
+[node name="RigidBody3D" type="RigidBody3D" parent="." groups=["enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05407, -2.7225)
 collision_layer = 3
 mass = 0.01
 continuous_cd = true
@@ -67,13 +67,13 @@ max_contacts_reported = 1000
 contact_monitor = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
-transform = Transform3D(1.245, 0, 0, 0, 1.245, 0, 0, 0, 1.245, -0.03, 0.483299, -0.4)
+transform = Transform3D(2.02, 0, 0, 0, 2.02, 0, 0, 0, 2.02, -0.03, -0.4, -0.4)
 material_override = SubResource("StandardMaterial3D_23pib")
 mesh = SubResource("CylinderMesh_qnysi")
 skeleton = NodePath("../CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
-transform = Transform3D(1.245, 0, 0, 0, 1.245, 0, 0, 0, 1.245, -0.0339296, 0.451457, -0.398353)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.0339296, -0.431843, -0.398353)
 shape = SubResource("CylinderShape3D_gbmns")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -84,4 +84,5 @@ light_indirect_energy = 26.1
 light_bake_mode = 0
 omni_range = 40.0
 
-[node name="finger" parent="." instance=ExtResource("5_o4rw8")]
+[node name="finger2" parent="." groups=["enemy"] instance=ExtResource("5_8upcf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
