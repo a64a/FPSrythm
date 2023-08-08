@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d3ft6cqmm86vd"]
+[gd_scene load_steps=35 format=3 uid="uid://d3ft6cqmm86vd"]
 
 [ext_resource type="PackedScene" uid="uid://di1uqu7umsbpl" path="res://Scenes/crosshair.tscn" id="2_lilg1"]
 
@@ -859,8 +859,6 @@ bind/261/pose = Transform3D(1, 0, 0, 0, 0, -1, 0, 1, 0, 0.4953, -0.50407, -2.019
 bind/262/name = &"upper_arm_ik_target.R"
 bind/262/bone = -1
 bind/262/pose = Transform3D(1, 0, 0, 0, -0.673033, 0.739613, 0, -0.739612, -0.673033, 0.4953, 1.73167, 1.15402)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_do7s6"]
 
 [sub_resource type="Animation" id="Animation_od2c5"]
 resource_name = "appear-paint"
@@ -5305,7 +5303,6 @@ layers = 8
 mesh = SubResource("ArrayMesh_gn4if")
 skin = SubResource("Skin_yrjij")
 skeleton = NodePath("../../RIG-finger/Skeleton3D")
-surface_material_override/1 = SubResource("StandardMaterial3D_do7s6")
 
 [node name="RIG-finger" type="Node3D" parent="."]
 

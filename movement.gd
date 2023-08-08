@@ -33,6 +33,8 @@ var last_beat_action_pressed = "none"
 var was_shift_pressed_on_last_action = false
 var seconds_since_last_action_press = 0
 
+var passion_combo = 0 # Combo meter (shots hit in succession
+
 const freq = 2.0
 const amp = 0.08
 
