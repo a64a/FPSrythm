@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://nd6fbrh6xmno" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="1_1twvw"]
 [ext_resource type="PackedScene" uid="uid://crnrnqimmb3wn" path="res://Scenes/Player.tscn" id="2_vaj04"]
-[ext_resource type="PackedScene" uid="uid://d3ft6cqmm86vd" path="res://Scenes/animations.tscn" id="3_8w24e"]
 [ext_resource type="Script" path="res://Scenes/head.gd" id="3_yl3uw"]
 [ext_resource type="PackedScene" uid="uid://celg4cwluy66t" path="res://Scenes/shooting range.tscn" id="5_2hv7x"]
+[ext_resource type="PackedScene" uid="uid://cqb4dnq4100rn" path="res://blender/separated/character.blend" id="5_r38o6"]
 
 [sub_resource type="Environment" id="Environment_ruddx"]
 
@@ -57,8 +57,29 @@ transform = Transform3D(0.605, 0, 0, 0, 0.605, 0, 0, 0, 0.605, -0.00070715, 0.62
 shape = SubResource("SphereShape3D_6whbs")
 script = ExtResource("3_yl3uw")
 
-[node name="finger" parent="Player/head" instance=ExtResource("3_8w24e")]
-transform = Transform3D(-1.65289, 0, -1.445e-07, 0, 1.65289, 0, 1.445e-07, 0, -1.65289, 0, -2.94949, -0.406102)
+[node name="finger" parent="Player/head" instance=ExtResource("5_r38o6")]
+transform = Transform3D(1.653, 0, 0, 0, 1.653, 0.000346204, 0, -0.000346204, 1.653, 0, 2.13583, 0)
+
+[node name="RIG-finger" parent="Player/head/finger" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.07214, -8.10623e-06)
+
+[node name="RayCast3D" type="RayCast3D" parent="Player/head/finger/RIG-finger" index="1"]
+
+[node name="RayCast3D2" type="RayCast3D" parent="Player/head/finger/RIG-finger" index="2"]
+
+[node name="Camera_new" parent="Player/head/finger" index="1"]
+transform = Transform3D(-0.999935, -9.54064e-18, -3.2582e-07, -6.93889e-18, 0.999935, 1.45519e-11, 3.2582e-07, 1.45519e-11, -0.999935, 0, -1.37065, -0.0369239)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Player/head/finger/Camera_new" index="0"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="Player/head/finger/Camera_new/SubViewportContainer"]
+
+[node name="Camera3D" type="Camera3D" parent="Player/head/finger/Camera_new/SubViewportContainer/SubViewport"]
+
+[node name="AnimationTree" type="AnimationTree" parent="Player/head/finger/AnimationPlayer" index="0"]
+anim_player = NodePath("..")
 
 [node name="music playback" type="AudioStreamPlayer" parent="Player"]
 
@@ -89,3 +110,6 @@ pitch_scale = 1.86
 autoplay = true
 mix_target = 2
 max_polyphony = 2
+
+[editable path="Player/head/finger"]
+[editable path="finger2"]

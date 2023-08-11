@@ -5262,7 +5262,7 @@ states/pause/position = Vector2(623.941, 40.8089)
 states/shoot/node = SubResource("AnimationNodeAnimation_a1h6x")
 states/shoot/position = Vector2(364.889, 196.666)
 transitions = ["shoot", "idle", SubResource("AnimationNodeStateMachineTransition_imfv7"), "idle", "shoot", SubResource("AnimationNodeStateMachineTransition_ubhbl"), "Start", "shoot", SubResource("AnimationNodeStateMachineTransition_p1tb3"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_1ma1s"), "Start", "punch left", SubResource("AnimationNodeStateMachineTransition_52n4x"), "punch left", "idle", SubResource("AnimationNodeStateMachineTransition_lyc60"), "idle", "pause", SubResource("AnimationNodeStateMachineTransition_cku1y"), "pause", "idle", SubResource("AnimationNodeStateMachineTransition_ng2kn"), "punch left", "pause", SubResource("AnimationNodeStateMachineTransition_xcxyg"), "pause", "punch left", SubResource("AnimationNodeStateMachineTransition_7x8hy"), "idle", "punch left", SubResource("AnimationNodeStateMachineTransition_p6sjo"), "punch left", "shoot", SubResource("AnimationNodeStateMachineTransition_t3q2k"), "shoot", "punch left", SubResource("AnimationNodeStateMachineTransition_vm7ud"), "pause", "shoot", SubResource("AnimationNodeStateMachineTransition_v5j08"), "shoot", "pause", SubResource("AnimationNodeStateMachineTransition_s8hvt"), "Start", "pause", SubResource("AnimationNodeStateMachineTransition_l75dn")]
-graph_offset = Vector2(-213.392, -22.5244)
+graph_offset = Vector2(-201.392, -51.5244)
 
 [node name="finger" type="Node3D"]
 

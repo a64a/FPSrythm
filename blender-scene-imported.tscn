@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dluch01ys62wr"]
+
+[ext_resource type="PackedScene" uid="uid://dnsngess88m8c" path="res://blender/finger.blend" id="1_xria7"]
+[ext_resource type="Script" path="res://movement.gd" id="2_vf7ur"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="finger" parent="." instance=ExtResource("1_xria7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84771, 0, -12.2084)
+
+[node name="Camera" parent="finger" index="0"]
+transform = Transform3D(-1, 0, -3.25841e-07, 0, 1, 0, 3.25841e-07, 0, -1, 0, 1.70845, -0.0362797)
+
+[node name="RIG-finger" parent="finger" index="3"]
+script = ExtResource("2_vf7ur")
+
+[editable path="finger"]
