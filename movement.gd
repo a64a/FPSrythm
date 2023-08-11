@@ -21,6 +21,7 @@ var sprint_speed = 7.0
 var jump_velocity = 4.6
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var counter = 0
+var can_shoot = true
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED # Forces the mouse into the center
@@ -32,33 +33,35 @@ func _process(_a):
 	guncam.global_transform = camera.global_transform # Adds a viewport to the arms and anything held, as to not clip into walls
 
 func create_beat_queue_system():
-	if latest_beat_action.size() < 5:
+	if latest_beat_action.size() < 6:
 		if Input.is_action_just_pressed("shoot"):
 			latest_beat_action.append("shoot")
-		if Input.is_action_just_pressed("reload"):
-			latest_beat_action.append("reload")
+		if Input.is_action_just_pressed("punch"):
+			latest_beat_action.append("punch")
 	state_machine.travel("idle")
 
 func use_beat_queue_system():
-	if latest_beat_action.size() > 0:
-		if latest_beat_action[0] == "shoot":
+	if latest_beat_action.size() != 0 and latest_beat_action[0] != "":
+		if can_shoot == true and latest_beat_action[0] == "shoot":
 			if ray1.is_colliding() or ray2.is_colliding(): # Check whether to run distance_check
 				distance_check()
-				state_machine.travel("shoot")
+				can_shoot = false
 				latest_beat_action.erase("shoot")
-		elif latest_beat_action[0] == "reload": # Reload is a placeholder for another function, it isnt neccesary to reload anymore
-			state_machine.travel("pause")
-			latest_beat_action.erase("reload")
+		elif latest_beat_action[0] == "punch":
+			if 1 == 1:
+				state_machine.travel("punch")
+				latest_beat_action.erase("punch")
 
 func check_on_beat(delta):
 	counter += delta # Add count
 	create_beat_queue_system()
-	if counter > 0.5: # Set a 120 bpm counter
-		use_beat_queue_system()
+	if counter >= 1.5: # Set a 120 bpm counter
+		can_shoot = true
 		print(latest_beat_action)
 		audio.stream = single_beat # Set sound to play
 		audio.play() # Play sound
-		counter -= 0.5 # Reset counter
+		counter = 0 # Reset counter
+		use_beat_queue_system()
 
 func ray_check(no_ray): # Checks if any of the rays collides
 	if no_ray == ray1: # Decides how much the function should wait before checking ray collision base on which finger fires
@@ -83,23 +86,17 @@ func ray_check(no_ray): # Checks if any of the rays collides
 		else: # Else, lay down ( for floors )
 			b.look_at(no_ray.get_collision_point() + no_ray.get_collision_normal(), Vector3.DOWN)
 		await get_tree().create_timer(0.145).timeout # Endlag, and to avoid animation cancelling
+	can_shoot = false
 
 func distance_check(): # Checks whether the collider is close enough to trigger the punch
-	var origin = ray1.global_transform.origin
-	var collision_point = ray1.get_collision_point()
-	var distance1 = origin.distance_to(collision_point)
-	origin = ray2.global_transform.origin
-	collision_point = ray2.get_collision_point()
-	var distance2 = origin.distance_to(collision_point)
-	if distance1 < 1 or distance2 < 1: # If either of the ray origin points are 1 meter or less from the collider, do a punch
-		state_machine.travel("punch left")
-	else: # Else, do shoot and following
-		state_machine.travel("shoot") 
-		if ray1.is_colliding():
-			ray_check(ray1)
-		if ray2.is_colliding():
-			ray_check(ray2)
-		await get_tree().create_timer(0.35).timeout # Waits to sync hud switch with animation and firing
+	state_machine.travel("shoot") 
+	if ray1.is_colliding():
+		ray_check(ray1)
+	if ray2.is_colliding():
+		ray_check(ray2)
+	can_shoot = false
+	await get_tree().create_timer(0.35).timeout # Waits to sync hud switch with animation and firing
+	return 0;
 
 func _input(event):
 	if event is InputEventMouseMotion: # If input is a mouse movement:
@@ -107,11 +104,11 @@ func _input(event):
 		rotation = Vector3(0, yRot, 0) # Rotate
 
 func _physics_process(delta):
+	check_on_beat(delta) # Moving this before the slow time command, puts the music out of the slow effect
 	if Input.is_action_pressed("slow_time"): # If left single quote is held, slow time
 		delta = (delta/2)
 	else:
 		delta = delta
-	check_on_beat(delta) # Moving this before the slow time command, puts the music out of the slow effect
 	if not is_on_floor(): #If is in the air, apply gravity
 		velocity.y -= gravity * delta
 	if Input.is_action_just_pressed("jump") and is_on_floor(): # If space is pressed and isnt in the air, jump

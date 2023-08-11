@@ -1,9 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://xdj7dhnho068"]
+[gd_scene load_steps=12 format=3 uid="uid://dlqb2pd3dvnwf"]
 
 [ext_resource type="Texture2D" uid="uid://nd6fbrh6xmno" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="1_1twvw"]
 [ext_resource type="PackedScene" uid="uid://crnrnqimmb3wn" path="res://Scenes/Player.tscn" id="2_vaj04"]
 [ext_resource type="Script" path="res://Scenes/head.gd" id="3_yl3uw"]
-[ext_resource type="PackedScene" uid="uid://l7da3b0sdi1x" path="res://blender/separated/character.tscn" id="4_f1tu2"]
+[ext_resource type="PackedScene" uid="uid://bm6eivwkul622" path="res://blender/separated/character.tscn" id="4_f1tu2"]
 [ext_resource type="PackedScene" uid="uid://celg4cwluy66t" path="res://Scenes/shooting range.tscn" id="5_2hv7x"]
 
 [sub_resource type="Environment" id="Environment_ruddx"]
