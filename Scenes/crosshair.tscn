@@ -1,14 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://di1uqu7umsbpl"]
-
-[ext_resource type="Texture2D" uid="uid://8eewak3dypxu" path="res://assets/unnamed.png" id="1_aqchm"]
-
-[sub_resource type="GDScript" id="GDScript_573kq"]
-script/source = "extends Control
-"
+[gd_scene load_steps=3 format=3 uid="uid://di1uqu7umsbpl"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k6y8l"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k2u6e"]
+load_path = "res://.godot/imported/1022053-200.png-b3a218dc2025a6a90356d54d9a8a372d.s3tc.ctex"
 
 [node name="Ui" type="Control"]
 layout_mode = 3
@@ -21,7 +16,6 @@ offset_right = 10.0
 offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
-script = SubResource("GDScript_573kq")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -42,22 +36,3 @@ visibility_layer = 16
 material = SubResource("ShaderMaterial_k6y8l")
 scale = Vector2(0.25, 0.25)
 texture = SubResource("CompressedTexture2D_k2u6e")
-
-[node name="Container" type="CenterContainer" parent="."]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Weapon" type="Sprite2D" parent="Container"]
-visibility_layer = 16
-position = Vector2(-86, -45)
-scale = Vector2(0.11, 0.11)
-skew = 0.200713
-texture = ExtResource("1_aqchm")

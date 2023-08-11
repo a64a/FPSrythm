@@ -5,8 +5,7 @@ extends CharacterBody3D
 @onready var ray1 = get_node("head/finger/RIG-finger/RayCast3D") 
 @onready var ray2 = get_node("head/finger/RIG-finger/RayCast3D2")
 @onready var hole = preload("res://Scenes/bullethole.tscn")
-#@onready var crosshair = get_node("head/finger/Camera_new/crosshair/CenterContainer/Sprite2D")
-#@onready var weapon = get_node("head/finger/Camera_new/crosshair/Container/Weapon")
+@onready var crosshair = get_node("head/finger/Camera_new/crosshair/CenterContainer/Sprite2D")
 @onready var camera = get_node("head/finger/Camera_new")
 @onready var guncam = get_node("head/finger/Camera_new/SubViewportContainer/SubViewport/Camera3D")
 @onready var audio = get_node("../AudioStreamPlayer")
@@ -44,7 +43,7 @@ func use_beat_queue_system():
 	if latest_beat_action.size() > 0:
 		if latest_beat_action[0] == "shoot":
 			if ray1.is_colliding() or ray2.is_colliding(): # Check whether to run distance_check
-				distance_check("res://assets/IMG-0301.PNG", "res://assets/IMG-0300.PNG")
+				distance_check()
 				state_machine.travel("shoot")
 				latest_beat_action.erase("shoot")
 		elif latest_beat_action[0] == "reload": # Reload is a placeholder for another function, it isnt neccesary to reload anymore
@@ -85,7 +84,7 @@ func ray_check(no_ray): # Checks if any of the rays collides
 			b.look_at(no_ray.get_collision_point() + no_ray.get_collision_normal(), Vector3.DOWN)
 		await get_tree().create_timer(0.145).timeout # Endlag, and to avoid animation cancelling
 
-func distance_check(a, b): # Checks whether the collider is close enough to trigger the punch
+func distance_check(): # Checks whether the collider is close enough to trigger the punch
 	var origin = ray1.global_transform.origin
 	var collision_point = ray1.get_collision_point()
 	var distance1 = origin.distance_to(collision_point)
@@ -100,9 +99,7 @@ func distance_check(a, b): # Checks whether the collider is close enough to trig
 			ray_check(ray1)
 		if ray2.is_colliding():
 			ray_check(ray2)
-		#weapon.texture = load(a) # Loads hud element
 		await get_tree().create_timer(0.35).timeout # Waits to sync hud switch with animation and firing
-		#weapon.texture = load(b) # Loads hud element
 
 func _input(event):
 	if event is InputEventMouseMotion: # If input is a mouse movement:
