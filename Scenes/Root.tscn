@@ -66,6 +66,8 @@ transform = Transform3D(-1.65289, 0, -1.445e-07, 0, 1.65289, 0, 1.445e-07, 0, -1
 
 [node name="music playback" type="AudioStreamPlayer" parent="Player"]
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+
 [node name="finger2" parent="." instance=ExtResource("5_2hv7x")]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 8.74228e-08, 1, -1.06581e-14, -3.82137e-15, -1.06581e-14, -1, 0.337615, -0.485306, 6.30693)
 
