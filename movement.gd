@@ -54,7 +54,7 @@ func use_beat_queue_system():
 func check_on_beat(delta):
 	counter += delta # Add count
 	create_beat_queue_system()
-	if counter > 0.5: # Set a 120 bpm counter
+	if counter >= 0.5: # Set a 120 bpm counter
 		use_beat_queue_system()
 		print(latest_beat_action)
 		audio.stream = single_beat # Set sound to play
@@ -110,11 +110,11 @@ func _input(event):
 		rotation = Vector3(0, yRot, 0) # Rotate
 
 func _physics_process(delta):
+	check_on_beat(delta) # Moving this before the slow time command, puts the music out of the slow effect
 	if Input.is_action_pressed("slow_time"): # If left single quote is held, slow time
 		delta = (delta/2)
 	else:
 		delta = delta
-	check_on_beat(delta) # Moving this before the slow time command, puts the music out of the slow effect
 	if not is_on_floor(): #If is in the air, apply gravity
 		velocity.y -= gravity * delta
 	if Input.is_action_just_pressed("jump") and is_on_floor(): # If space is pressed and isnt in the air, jump
