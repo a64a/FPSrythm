@@ -5,10 +5,10 @@ extends CharacterBody3D
 @onready var ray1 = get_node("head/finger/RIG-finger/RayCast3D") 
 @onready var ray2 = get_node("head/finger/RIG-finger/RayCast3D2")
 @onready var hole = preload("res://Scenes/bullethole.tscn")
-@onready var crosshair = get_node("head/finger/Camera3D/crosshair/CenterContainer/Sprite2D")
-@onready var weapon = get_node("head/finger/Camera3D/crosshair/Container/Weapon")
-@onready var camera = get_node("head/finger/Camera3D")
-@onready var guncam = get_node("head/finger/Camera3D/SubViewportContainer/SubViewport/Camera3D")
+#@onready var crosshair = get_node("head/finger/Camera_new/crosshair/CenterContainer/Sprite2D")
+#@onready var weapon = get_node("head/finger/Camera_new/crosshair/Container/Weapon")
+@onready var camera = get_node("head/finger/Camera_new")
+@onready var guncam = get_node("head/finger/Camera_new/SubViewportContainer/SubViewport/Camera3D")
 @onready var audio = get_node("../AudioStreamPlayer")
 @onready var single_beat = preload("res://music/BeepBox-Song(2).wav")
 
@@ -59,7 +59,7 @@ func check_on_beat(delta):
 		print(latest_beat_action)
 		audio.stream = single_beat # Set sound to play
 		audio.play() # Play sound
-		counter = 0 # Reset counter
+		counter -= 0.5 # Reset counter
 
 func ray_check(no_ray): # Checks if any of the rays collides
 	if no_ray == ray1: # Decides how much the function should wait before checking ray collision base on which finger fires
@@ -100,9 +100,9 @@ func distance_check(a, b): # Checks whether the collider is close enough to trig
 			ray_check(ray1)
 		if ray2.is_colliding():
 			ray_check(ray2)
-		weapon.texture = load(a) # Loads hud element
+		#weapon.texture = load(a) # Loads hud element
 		await get_tree().create_timer(0.35).timeout # Waits to sync hud switch with animation and firing
-		weapon.texture = load(b) # Loads hud element
+		#weapon.texture = load(b) # Loads hud element
 
 func _input(event):
 	if event is InputEventMouseMotion: # If input is a mouse movement:

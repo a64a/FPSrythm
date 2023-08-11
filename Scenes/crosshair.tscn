@@ -9,7 +9,6 @@ script/source = "extends Control
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k6y8l"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k2u6e"]
-load_path = "res://.godot/imported/1022053-200.png-b3a218dc2025a6a90356d54d9a8a372d.s3tc.ctex"
 
 [node name="Ui" type="Control"]
 layout_mode = 3
