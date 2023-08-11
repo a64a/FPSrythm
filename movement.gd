@@ -59,7 +59,7 @@ func check_on_beat(delta):
 		print(latest_beat_action)
 		audio.stream = single_beat # Set sound to play
 		audio.play() # Play sound
-		counter = 0 # Reset counter
+		counter -= 0.5 # Reset counter
 
 func ray_check(no_ray): # Checks if any of the rays collides
 	if no_ray == ray1: # Decides how much the function should wait before checking ray collision base on which finger fires
