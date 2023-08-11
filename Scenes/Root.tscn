@@ -1,16 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://xdj7dhnho068"]
+[gd_scene load_steps=12 format=3 uid="uid://xdj7dhnho068"]
 
-[ext_resource type="Texture2D" uid="uid://crp7432j80hnh" path="res://addons/kenney_prototype_textures/dark/texture_05.png" id="1_uyohc"]
+[ext_resource type="Texture2D" uid="uid://nd6fbrh6xmno" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="1_1twvw"]
 [ext_resource type="PackedScene" uid="uid://crnrnqimmb3wn" path="res://Scenes/Player.tscn" id="2_vaj04"]
 [ext_resource type="PackedScene" uid="uid://d3ft6cqmm86vd" path="res://Scenes/animations.tscn" id="3_8w24e"]
 [ext_resource type="Script" path="res://Scenes/head.gd" id="3_yl3uw"]
 [ext_resource type="PackedScene" uid="uid://celg4cwluy66t" path="res://Scenes/shooting range.tscn" id="5_2hv7x"]
 
-[sub_resource type="Sky" id="Sky_1gd3a"]
-
-[sub_resource type="Environment" id="Environment_57f50"]
-background_energy_multiplier = 0.65
-sky = SubResource("Sky_1gd3a")
+[sub_resource type="Environment" id="Environment_ruddx"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qcjjv"]
 exposure_multiplier = 1.065
@@ -18,14 +14,14 @@ exposure_multiplier = 1.065
 [sub_resource type="BoxShape3D" id="BoxShape3D_x58i5"]
 size = Vector3(100, 0.2, 100)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4dec5"]
-albedo_texture = ExtResource("1_uyohc")
-uv1_scale = Vector3(1.81, 1.81, 1.81)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qwexi"]
+albedo_texture = ExtResource("1_1twvw")
 uv1_triplanar = true
-uv1_triplanar_sharpness = 0.5
 uv1_world_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_soirp"]
+lightmap_size_hint = Vector2i(1004, 508)
+add_uv2 = true
 size = Vector3(100, 0.2, 100)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6whbs"]
@@ -33,7 +29,7 @@ size = Vector3(100, 0.2, 100)
 [node name="Root" type="Node"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_57f50")
+environment = SubResource("Environment_ruddx")
 camera_attributes = SubResource("CameraAttributesPractical_qcjjv")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -46,7 +42,7 @@ shape = SubResource("BoxShape3D_x58i5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0364709, -0.822962, -0.0038209)
-material_override = SubResource("StandardMaterial3D_4dec5")
+material_override = SubResource("StandardMaterial3D_qwexi")
 mesh = SubResource("BoxMesh_soirp")
 
 [node name="Player" parent="." instance=ExtResource("2_vaj04")]
@@ -86,3 +82,10 @@ shadow_blur = 10.0
 distance_fade_enabled = true
 distance_fade_begin = 69.7
 omni_range = 40.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = 5.125
+pitch_scale = 1.86
+autoplay = true
+mix_target = 2
+max_polyphony = 2
