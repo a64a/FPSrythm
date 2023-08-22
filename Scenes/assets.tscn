@@ -7430,6 +7430,7 @@ tracks/237/keys = PackedFloat32Array(0, 1, 1, 1, 1)
 
 [sub_resource type="Animation" id="Animation_01hi8"]
 resource_name = "idle"
+loop_mode = 1
 tracks/0/type = "scale_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
