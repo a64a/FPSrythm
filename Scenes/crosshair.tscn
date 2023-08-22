@@ -1,4 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://di1uqu7umsbpl"]
+[gd_scene load_steps=5 format=3 uid="uid://di1uqu7umsbpl"]
+
+[ext_resource type="Texture2D" uid="uid://8eewak3dypxu" path="res://2D assets/unnamed.png" id="1_aqchm"]
+
+[sub_resource type="GDScript" id="GDScript_573kq"]
+script/source = "extends Control
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k6y8l"]
 
