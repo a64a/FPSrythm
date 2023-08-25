@@ -1,5 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://buviga2klkgsy"]
+[gd_scene format=3 uid="uid://buviga2klkgsy"]
 
-[ext_resource type="PackedScene" uid="uid://doxalfghuuclc" path="res://blender/separated/platform.blend" id="1_pfy1v"]
-
-[node name="platform" instance=ExtResource("1_pfy1v")]
+[node name="platform"]

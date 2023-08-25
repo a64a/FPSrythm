@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bawlrboy78g2i"
+path="res://.godot/imported/gunshot_normal.wav-97579c2636e18173212b9de47f0e7eed.sample"
+
+[deps]
+
+source_file="res://music + SFX/SFX/gunshot_normal.wav"
+dest_files=["res://.godot/imported/gunshot_normal.wav-97579c2636e18173212b9de47f0e7eed.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

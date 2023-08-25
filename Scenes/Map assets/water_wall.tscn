@@ -1,5 +1,3 @@
-[gd_scene load_steps=2 format=3 uid="uid://txtk5h5a2fax"]
+[gd_scene format=3 uid="uid://txtk5h5a2fax"]
 
-[ext_resource type="PackedScene" uid="uid://brein3rvb8ydx" path="res://blender/separated/water_wall.blend" id="1_vj17n"]
-
-[node name="water_wall" instance=ExtResource("1_vj17n")]
+[node name="water_wall"]

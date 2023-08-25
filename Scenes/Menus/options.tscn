@@ -1,0 +1,77 @@
+[gd_scene load_steps=2 format=3 uid="uid://blk6ew6pedvhn"]
+
+[ext_resource type="Script" path="res://Option_menu.gd" id="1_1xxty"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1xxty")
+
+[node name="ItemList" type="ItemList" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ItemList"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 163.0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="ItemList/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.215686, 0.215686, 0.215686, 1)
+
+[node name="Button" type="Button" parent="ItemList/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_top = 4.0
+offset_right = 77.5
+offset_bottom = 35.0
+grow_horizontal = 2
+size_flags_vertical = 2
+text = "Keybinds"
+
+[node name="back" type="Button" parent="ItemList/VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.5
+offset_top = 608.0
+offset_right = 77.5
+offset_bottom = 639.0
+grow_horizontal = 2
+size_flags_vertical = 2
+text = "Back"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="ItemList"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.157118
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect2" type="ColorRect" parent="ItemList/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.141176, 0.141176, 0.141176, 1)
+
+[connection signal="pressed" from="ItemList/VBoxContainer/ColorRect/back" to="." method="_on_back_pressed"]
