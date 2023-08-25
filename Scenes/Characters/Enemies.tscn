@@ -13,7 +13,7 @@ radius = 5.12206
 size = Vector3(0.23102, 0.100917, 0.379605)
 
 [node name="hydrant" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.624989, 0)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.624989, 0)
 script = ExtResource("1_chkuv")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -1823,6 +1823,9 @@ shape = SubResource("SphereShape3D_6cude")
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.118727, 0)
 shape = SubResource("BoxShape3D_mb6ix")
+
+[node name="MovementCheck" type="RayCast3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, -4.37114e-05, -5, 0, 1000, -2.18557e-07, 0, 1.03013, 0)
 
 [connection signal="body_entered" from="aggro range" to="." method="_on_aggro_range_body_entered"]
 [connection signal="body_exited" from="aggro range" to="." method="_on_aggro_range_body_exited"]
