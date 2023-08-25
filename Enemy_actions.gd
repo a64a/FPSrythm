@@ -6,7 +6,7 @@ extends CharacterBody3D
 
 var path = []
 var path_node = 0
-
+var accel = 20
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 enum {
@@ -40,7 +40,6 @@ func _process(_delta):
 
 func _physics_process(delta):
 	var direction = Vector3()
-	nav.target_positon = Global.target.global_position
 	direction = nav.get_next_path_position() - global_position
 	direction = direction.normalized()
 	

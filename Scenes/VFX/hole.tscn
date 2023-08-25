@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmmt0ke1e6ykj"]
+[gd_scene load_steps=4 format=3 uid="uid://bwahsl62ymrvx"]
 
-[ext_resource type="Texture2D" uid="uid://dvgp4sijj7rg3" path="res://2D assets/graphicscrate-bullet-hole-4_prev_sm.png" id="1_c4r3p"]
+[ext_resource type="Texture2D" uid="uid://dvgp4sijj7rg3" path="res://2D assets/graphicscrate-bullet-hole-4_prev_sm.png" id="1_8nq5m"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wj3p"]
 transparency = 1
-albedo_texture = ExtResource("1_c4r3p")
+albedo_texture = ExtResource("1_8nq5m")
 
 [sub_resource type="QuadMesh" id="QuadMesh_otb8t"]
 

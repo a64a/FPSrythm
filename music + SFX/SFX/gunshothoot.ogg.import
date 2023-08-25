@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://0mhx5xhcep7i"
+path="res://.godot/imported/gunshothoot.ogg-e01613a621455a143db17e08018d9a64.oggvorbisstr"
+
+[deps]
+
+source_file="res://music + SFX/SFX/gunshothoot.ogg"
+dest_files=["res://.godot/imported/gunshothoot.ogg-e01613a621455a143db17e08018d9a64.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

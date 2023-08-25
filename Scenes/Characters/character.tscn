@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://bm6eivwkul622"]
 
-[ext_resource type="PackedScene" uid="uid://di1uqu7umsbpl" path="res://Scenes/crosshair.tscn" id="1_4m5nh"]
+[ext_resource type="PackedScene" uid="uid://di1uqu7umsbpl" path="res://Scenes/Menus/crosshair.tscn" id="1_atyyx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tyfbb"]
 resource_name = "metal 1"
@@ -8963,5 +8963,5 @@ current = true
 fov = 123.4
 near = 0.002
 
-[node name="crosshair" parent="Camera_new" instance=ExtResource("1_4m5nh")]
+[node name="crosshair" parent="Camera_new" instance=ExtResource("1_atyyx")]
 metadata/_edit_use_anchors_ = true

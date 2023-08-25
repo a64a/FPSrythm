@@ -4,7 +4,7 @@ extends CharacterBody3D
 @onready var state_machine = $head/finger/AnimationPlayer/AnimationTree.get("parameters/playback")
 @onready var ray1 = get_node("head/finger/RIG-finger/RayCast3D") 
 @onready var ray2 = get_node("head/finger/RIG-finger/RayCast3D2")
-@onready var hole = preload("res://Scenes/hole.tscn")
+@onready var hole = preload("res://Scenes/VFX/hole.tscn")
 @onready var crosshair = get_node("head/finger/Camera_new/crosshair/CenterContainer/Sprite2D")
 @onready var camera = get_node("head/finger/Camera_new")
 @onready var guncam = get_node("head/finger/Camera_new/SubViewportContainer/SubViewport/Camera3D")
