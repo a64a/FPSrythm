@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Y_rot.gd" id="3_xnqgp"]
 [ext_resource type="PackedScene" uid="uid://bm6eivwkul622" path="res://Scenes/Characters/character.tscn" id="4_8l4qb"]
 [ext_resource type="Texture2D" uid="uid://nd6fbrh6xmno" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="5_6dodx"]
-[ext_resource type="PackedScene" uid="uid://br31sxbugpasw" path="res://Scenes/Characters/Enemies.tscn" id="6_ncofg"]
+[ext_resource type="PackedScene" uid="uid://du1v2lcjcvhc0" path="res://Scenes/Characters/Enemies.tscn" id="6_ncofg"]
 [ext_resource type="PackedScene" uid="uid://celg4cwluy66t" path="res://Scenes/Map assets/shooting range.tscn" id="7_wopm0"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_50b7q"]
