@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dlqb2pd3dvnwf"]
+[gd_scene load_steps=13 format=3 uid="uid://dlqb2pd3dvnwf"]
 
 [ext_resource type="PackedScene" uid="uid://crnrnqimmb3wn" path="res://Scenes/Characters/Player.tscn" id="1_kdqto"]
 [ext_resource type="Script" path="res://Player_actions.gd" id="2_34k83"]
@@ -7,11 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://nd6fbrh6xmno" path="res://addons/kenney_prototype_textures/dark/texture_01.png" id="5_6dodx"]
 [ext_resource type="PackedScene" uid="uid://br31sxbugpasw" path="res://Scenes/Characters/Enemies.tscn" id="6_ncofg"]
 [ext_resource type="PackedScene" uid="uid://celg4cwluy66t" path="res://Scenes/Map assets/shooting range.tscn" id="7_wopm0"]
-
-[sub_resource type="Environment" id="Environment_gsdph"]
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_qcjjv"]
-exposure_multiplier = 1.065
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_50b7q"]
 radius = 0.279076
@@ -38,10 +33,6 @@ add_uv2 = true
 size = Vector3(100, 0.2, 100)
 
 [node name="Root" type="Node"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_gsdph")
-camera_attributes = SubResource("CameraAttributesPractical_qcjjv")
 
 [node name="Player" parent="." instance=ExtResource("1_kdqto")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70912, -8.44655)

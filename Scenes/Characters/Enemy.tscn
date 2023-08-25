@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://djlagbppciyn2"]
+
+[ext_resource type="PackedScene" uid="uid://dwmwf70cvs0vw" path="res://Assets/blender/enemy.blend" id="1_coelv"]
+
+[node name="enemy2" instance=ExtResource("1_coelv")]
