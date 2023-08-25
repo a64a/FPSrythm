@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://nntfay7ucmvl"]
-
-[ext_resource type="PackedScene" uid="uid://cknwl4rysxju4" path="res://blender/separated/gunfire.blend" id="1_xsda1"]
-[ext_resource type="Material" uid="uid://3dadojassgfm" path="res://shaders/gunfire/gunfire_shader.tres" id="2_yuoec"]
-
-[node name="gunfire" instance=ExtResource("1_xsda1")]
-
-[node name="gunfire" parent="." index="0"]
-surface_material_override/0 = ExtResource("2_yuoec")

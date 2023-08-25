@@ -1,12 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://crnrnqimmb3wn"]
-
-[ext_resource type="Script" path="res://movement.gd" id="1_rigv5"]
+[gd_scene load_steps=2 format=3 uid="uid://crnrnqimmb3wn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_55ary"]
 size = Vector3(0.570299, 1.63069, 0.248177)
 
-[node name="CharacterBody3D" type="CharacterBody3D"]
-script = ExtResource("1_rigv5")
+[node name="CharacterBody3D" type="CharacterBody3D" groups=["Player"]]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.321909, -0.20947)
