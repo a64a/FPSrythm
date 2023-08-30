@@ -1,5 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://px11ie4vglcs"]
+[gd_scene load_steps=4 format=3 uid="uid://px11ie4vglcs"]
 
 [ext_resource type="PackedScene" uid="uid://doxalfghuuclc" path="res://Assets/blender/platform.blend" id="1_g35y2"]
+[ext_resource type="Material" uid="uid://ddu8mdsosxsa4" path="res://Shaders_and_materials/materials/Metal.tres" id="2_d8xy4"]
+[ext_resource type="Material" uid="uid://c4hl1qvwk6orm" path="res://Shaders_and_materials/materials/Water.tres" id="3_aqjoj"]
 
 [node name="platform" instance=ExtResource("1_g35y2")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_d8xy4")
+surface_material_override/1 = ExtResource("3_aqjoj")

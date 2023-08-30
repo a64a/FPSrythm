@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://1vmp8sb6tslv"]
+
+[ext_resource type="PackedScene" uid="uid://brein3rvb8ydx" path="res://Assets/blender/water_wall.blend" id="1_pb1ji"]
+[ext_resource type="Material" uid="uid://b2705cvcry5jd" path="res://Shaders_and_materials/materials/Water_wall.tres" id="2_21yec"]
+
+[node name="water_wall" instance=ExtResource("1_pb1ji")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_21yec")

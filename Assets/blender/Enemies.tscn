@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://br31sxbugpasw"]
 
 [ext_resource type="Script" path="res://Enemy_actions.gd" id="1_chkuv"]
-[ext_resource type="Shader" uid="uid://cldcfxhs82gqd" path="res://Shaders_and_materials/shaders/waterpunk_zone/water_with_foam.tres" id="2_q6isi"]
+[ext_resource type="Shader" uid="uid://cbxsyhtp160we" path="res://Shaders_and_materials/shaders/waterpunk_zone/Water.tres" id="2_q6isi"]
 [ext_resource type="Shader" path="res://shaders/waterpunk_zone/small_metal_plate.tres" id="3_i0l1l"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oasd0"]
