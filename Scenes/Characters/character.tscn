@@ -1,6 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://bm6eivwkul622"]
+[gd_scene load_steps=32 format=3 uid="uid://bm6eivwkul622"]
 
 [ext_resource type="PackedScene" uid="uid://di1uqu7umsbpl" path="res://Scenes/Menus/crosshair.tscn" id="1_atyyx"]
+[ext_resource type="Shader" path="res://Shaders_and_materials/dither.gdshader" id="1_rdu1y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ig5r"]
+render_priority = 0
+shader = ExtResource("1_rdu1y")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tyfbb"]
 resource_name = "metal 1"
@@ -8911,6 +8916,7 @@ bones/263/scale = Vector3(1, 1, 1)
 [node name="finger" type="MeshInstance3D" parent="RIG-finger/Skeleton3D"]
 transform = Transform3D(1, 0, 3.01992e-07, 0, 1, 0, -3.01992e-07, 0, 1, 0, 0, 0)
 layers = 2
+material_overlay = SubResource("ShaderMaterial_4ig5r")
 mesh = SubResource("ArrayMesh_6ui3y")
 skin = SubResource("Skin_7qi4l")
 

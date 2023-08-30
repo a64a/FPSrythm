@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c4hl1qvwk6orm"]
 
-[ext_resource type="Shader" path="res://Shaders_and_materials/shaders/waterpunk_zone/water_with_foam.tres" id="1_anpjk"]
+[ext_resource type="Shader" uid="uid://sarp6h1xe7k0" path="res://Shaders_and_materials/shaders/waterpunk_zone/water_with_foam.tres" id="1_anpjk"]
 
 [resource]
 render_priority = 0

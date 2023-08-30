@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b2705cvcry5jd"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cgug2prvoluf7"]
 
-[ext_resource type="Shader" uid="uid://bg1jbq3wdttg4" path="res://Shaders_and_materials/shaders/waterpunk_zone/Water_wall.tres" id="1_b64fo"]
+[ext_resource type="Shader" uid="uid://d1fvlp2163vqu" path="res://Shaders_and_materials/shaders/waterpunk_zone/Water_wall.tres" id="1_b64fo"]
 
 [resource]
 render_priority = 0
