@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw6p1y1a8hqki"]
+
+[ext_resource type="PackedScene" uid="uid://px11ie4vglcs" path="res://Scenes/Map assets/platform.tscn" id="1_1plkp"]
+[ext_resource type="PackedScene" uid="uid://1vmp8sb6tslv" path="res://Scenes/Map assets/water_wall.tscn" id="2_nkjdr"]
+
+[node name="water_level" type="Node3D"]
+
+[node name="platform" parent="." instance=ExtResource("1_1plkp")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="water_wall" parent="." instance=ExtResource("2_nkjdr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.5, 0, 11)
+
+[node name="water_wall2" parent="." instance=ExtResource("2_nkjdr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.5, 0, 11)
+
+[node name="water_wall3" parent="." instance=ExtResource("2_nkjdr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, 0, 5.5)
+
+[node name="water_wall4" parent="." instance=ExtResource("2_nkjdr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -11, 0, -5.5)
+
+[node name="water_wall5" parent="." instance=ExtResource("2_nkjdr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.5, 0, -11)
+
+[node name="water_wall6" parent="." instance=ExtResource("2_nkjdr")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.5, 0, -11)
+
+[node name="water_wall7" parent="." instance=ExtResource("2_nkjdr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0, -5.5)
+
+[node name="water_wall8" parent="." instance=ExtResource("2_nkjdr")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 11, 0, 5.5)
