@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwqgepnqe3hy6"]
 
 [ext_resource type="PackedScene" uid="uid://brein3rvb8ydx" path="res://Assets/blender/water_wall.blend" id="1_pb1ji"]
-[ext_resource type="Material" path="res://Shaders_and_materials/materials/Water_wall.tres" id="2_21yec"]
+[ext_resource type="Material" uid="uid://b2705cvcry5jd" path="res://Shaders_and_materials/materials/Water_wall.tres" id="2_21yec"]
 
 [node name="water_wall" instance=ExtResource("1_pb1ji")]
 
