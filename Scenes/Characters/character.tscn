@@ -8957,7 +8957,7 @@ size = Vector2i(2560, 1440)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Camera_new/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76, 0.0190551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62279, 0.0190551)
 cull_mask = 10
 current = true
 fov = 123.4
