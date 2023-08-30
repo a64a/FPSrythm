@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 [gd_resource type="VisualShader" load_steps=79 format=3 uid="uid://bg1jbq3wdttg4"]
+=======
+[gd_resource type="VisualShader" load_steps=62 format=3 uid="uid://bpblq53h3me7p"]
+>>>>>>> 814d3e5 (pathfinding among other things)
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_sahkx"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(1, 1)]

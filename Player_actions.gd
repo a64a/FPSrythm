@@ -10,7 +10,7 @@ extends CharacterBody3D
 @onready var guncam = get_node("head/finger/Camera_new/SubViewportContainer/SubViewport/Camera3D")
 @onready var audio = get_node("../Music Player")
 @onready var single_beat = preload("res://Sound/LMMS files/Single beat.wav")
-
+@onready var head = $head
 @export var sens = 0.5
 
 var latest_beat_action = []
@@ -22,6 +22,9 @@ var jump_velocity = 4.6
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var counter = 0
 var can_shoot = true
+const BOB_FREQ = 1.8
+const BOB_AMP = 0.05
+var t_bob = 0.0
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED # Forces the mouse into the center
@@ -44,8 +47,9 @@ func use_beat_queue_system():
 	if latest_beat_action.size() != 0 and latest_beat_action[0] != "":
 		if can_shoot == true and latest_beat_action[0] == "shoot":
 			if ray1.is_colliding() or ray2.is_colliding(): # Check whether to run distance_check
-				distance_check()
 				can_shoot = false
+				distance_check()
+				await get_tree().create_timer(0.35).timeout # Waits to sync hud switch with animation and firing
 				latest_beat_action.erase("shoot")
 		elif latest_beat_action[0] == "punch":
 			if 1 == 1:
@@ -132,3 +136,10 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
 		velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
 	move_and_slide() # Initiate movement and velocity
+	t_bob += delta * velocity.length() * float(is_on_floor())
+	camera.transform.origin = _headbob(t_bob)
+
+func _headbob(time) -> Vector3:
+	var pos = Vector3.ZERO
+	pos.y = sin(time * BOB_FREQ) * BOB_AMP + 2.25
+	return pos

@@ -1,60 +1,39 @@
 extends CharacterBody3D
 
 @onready var eyes = $Eyes
-@onready var sight = get_node("aggro range")
-@onready var ray = get_node("MovementCheck")
-var path = []
-var path_node = 0
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@export var player_path : NodePath
+@onready var nav_agent = $NavigationAgent3D
+#@onready var state_machine = get_node("RIG-enemy/Skeleton3D/enemy/AnimationPlayer/AnimationTree").get("parameters/playback")
 
 enum {
 	alert,
 	idle,
 }
 var check
-var target 
+@onready var target = get_node("../Player/head")
 var state
 var counter = 0
 const turn_speed = 15
-const speed = 5
-
-func _on_aggro_range_body_entered(body):
-	if body.is_in_group("Player"):
-		state = alert
-		target = body
-
-
-func _on_aggro_range_body_exited(body):
-	if body.is_in_group("Player"):
-		state = idle
+var speed := 3.0
 
 func _process(delta):
+	if global_position.distance_to(target.global_position) < 10:
+		state = alert
 	match state:
 		alert:
-			eyes.look_at(target.global_transform.origin, Vector3.UP)
+			eyes.look_at(transform.origin + velocity, Vector3.UP)
 			rotate_y(deg_to_rad(eyes.rotation.y * turn_speed))
-			var collider = ray.get_collider()
-			var truth_check = is_instance_valid(collider)
-			if truth_check == true and is_on_floor() and collider.is_in_group("Player"): # Slowing and speeding up
-				var origin = ray.global_transform.origin
-				var collision_point = ray.get_collision_point()
-				var distance = origin.distance_to(collision_point)
-				var direction2 = (transform.basis * Vector3(0, 0, eyes.rotation.y)).normalized()
-				print(distance)
-				if distance > 1 and direction2:
-					velocity.x = lerp(velocity.x, -direction2.x * speed, delta * 5.0)
-					velocity.z = lerp(velocity.z, -direction2.z * speed, delta * 5.0)
-				else:
-					velocity.x = 0
-					velocity.z = 0
+			velocity = Vector3.ZERO
+			nav_agent.set_target_position(target.global_transform.origin)
+			var next_nav_point = nav_agent.get_next_path_position()
+			if global_position.distance_to(target.global_position) > 1.5:
+				velocity = (next_nav_point - global_transform.origin).normalized() * speed
+				#state_machine.travel("walk_left")
 		idle:
 			pass
 
 func _physics_process(delta):
-	if Input.is_action_pressed("slow_time"): # If left single quote is held, slow time
-		delta = (delta/2)
-	else:
-		delta = delta
 	if not is_on_floor(): #If is in the air, apply gravity
 		velocity.y -= gravity * delta
 	move_and_slide() # Initiate movement and velocity
