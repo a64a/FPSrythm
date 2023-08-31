@@ -7,5 +7,6 @@
 [node name="platform" instance=ExtResource("1_g35y2")]
 
 [node name="Cube" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10812, -0.0521049, 0.108404)
 surface_material_override/0 = ExtResource("2_d8xy4")
 surface_material_override/1 = ExtResource("3_aqjoj")
