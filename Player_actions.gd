@@ -77,7 +77,11 @@ func ray_check(no_ray): # Checks if any of the rays collides
 	var collider = no_ray.get_collider() # Gets the colliding objects id
 	var truth_check = is_instance_valid(collider) # Checks if the instance is valid
 	if truth_check == true and collider.is_in_group("enemy"): # If instance is valind and in the group enemy, destroy it
-		collider.queue_free()
+		if collider.hp >= 1:
+			collider.hp -= 1
+			print("hit")
+		else:
+			collider.queue_free()
 	else: # Otherwise add a bullet hole
 		var b = hole.instantiate()
 		get_tree().get_root().add_child(b)

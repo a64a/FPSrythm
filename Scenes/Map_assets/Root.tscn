@@ -93,7 +93,7 @@ omni_range = 40.0
 [node name="Music Player" type="AudioStreamPlayer" parent="."]
 autoplay = true
 
-[node name="hydrant" parent="." instance=ExtResource("6_ncofg")]
+[node name="hydrant" parent="." groups=["enemy"] instance=ExtResource("6_ncofg")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0307601, 3.41184, -18.764)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]

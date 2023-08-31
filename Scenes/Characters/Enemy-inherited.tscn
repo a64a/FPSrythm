@@ -1,9 +1,16 @@
-[gd_scene load_steps=26 format=3 uid="uid://jj2aearmfnn"]
+[gd_scene load_steps=29 format=3 uid="uid://jj2aearmfnn"]
 
 [ext_resource type="PackedScene" uid="uid://dwmwf70cvs0vw" path="res://Assets/blender/enemy.blend" id="1_joek4"]
 [ext_resource type="Script" path="res://Enemy-signals.gd" id="2_1fqpe"]
 [ext_resource type="Material" uid="uid://ddu8mdsosxsa4" path="res://Shaders_and_materials/materials/Metal.tres" id="2_dn2ca"]
 [ext_resource type="Material" uid="uid://c4hl1qvwk6orm" path="res://Shaders_and_materials/materials/Water.tres" id="3_2sv86"]
+[ext_resource type="Shader" path="res://Scenes/Characters/Hitshader.gdshader" id="3_hdne5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jpdvs"]
+render_priority = 0
+shader = ExtResource("3_hdne5")
+shader_parameter/divide = 0.5
+shader_parameter/blur = 0.1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p280t"]
 animation = &"enemy-sleeping"
@@ -17,11 +24,11 @@ animation = &"melee"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ow30n"]
 animation = &"shoot"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_eh80r"]
-animation = &"walk-forward"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p650s"]
+animation = &"walk-forward-left"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mg432"]
-animation = &"walk-forward"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kh0xl"]
+animation = &"walk-forward-right"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cyjm7"]
 switch_mode = 2
@@ -31,29 +38,6 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nh5h3"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ysgff"]
-xfade_time = 0.2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ssq7x"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pkma3"]
-xfade_time = 0.2
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a0754"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xo380"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v476k"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ffx6t"]
-xfade_time = 0.2
-switch_mode = 2
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e84qb"]
 xfade_time = 0.2
 switch_mode = 2
@@ -62,11 +46,31 @@ switch_mode = 2
 xfade_time = 0.2
 switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_os5fw"]
-xfade_time = 0.2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w1bmk"]
+switch_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ip5ae"]
-xfade_time = 0.2
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8n18e"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iw8n8"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5yit3"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8oino"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_inign"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_buf5e"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_62wom"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d40vs"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wltts"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_23yg7"]
 states/enemy-sleeping/node = SubResource("AnimationNodeAnimation_p280t")
@@ -77,12 +81,12 @@ states/melee/node = SubResource("AnimationNodeAnimation_0sdqm")
 states/melee/position = Vector2(483.333, 326.667)
 states/shoot/node = SubResource("AnimationNodeAnimation_ow30n")
 states/shoot/position = Vector2(273.333, 266)
-states/walk-forward/node = SubResource("AnimationNodeAnimation_mg432")
-states/walk-forward/position = Vector2(573.333, 145.21)
-"states/walk-forward 2/node" = SubResource("AnimationNodeAnimation_eh80r")
-"states/walk-forward 2/position" = Vector2(745.333, 251.333)
-transitions = ["Start", "enemy-sleeping", SubResource("AnimationNodeStateMachineTransition_cyjm7"), "enemy-sleeping", "enemy-wake-up", SubResource("AnimationNodeStateMachineTransition_60m1n"), "enemy-wake-up", "shoot", SubResource("AnimationNodeStateMachineTransition_nh5h3"), "walk-forward", "shoot", SubResource("AnimationNodeStateMachineTransition_ysgff"), "enemy-wake-up", "walk-forward", SubResource("AnimationNodeStateMachineTransition_ssq7x"), "shoot", "walk-forward", SubResource("AnimationNodeStateMachineTransition_pkma3"), "walk-forward", "walk-forward 2", SubResource("AnimationNodeStateMachineTransition_a0754"), "walk-forward 2", "shoot", SubResource("AnimationNodeStateMachineTransition_xo380"), "walk-forward 2", "walk-forward", SubResource("AnimationNodeStateMachineTransition_v476k"), "melee", "walk-forward", SubResource("AnimationNodeStateMachineTransition_ffx6t"), "melee", "shoot", SubResource("AnimationNodeStateMachineTransition_e84qb"), "shoot", "melee", SubResource("AnimationNodeStateMachineTransition_15iow"), "walk-forward", "melee", SubResource("AnimationNodeStateMachineTransition_os5fw"), "walk-forward 2", "melee", SubResource("AnimationNodeStateMachineTransition_ip5ae")]
-graph_offset = Vector2(-111, 129)
+states/walk-forward-left/node = SubResource("AnimationNodeAnimation_p650s")
+states/walk-forward-left/position = Vector2(521, 165)
+states/walk-forward-right/node = SubResource("AnimationNodeAnimation_kh0xl")
+states/walk-forward-right/position = Vector2(767.667, 277)
+transitions = ["Start", "enemy-sleeping", SubResource("AnimationNodeStateMachineTransition_cyjm7"), "enemy-sleeping", "enemy-wake-up", SubResource("AnimationNodeStateMachineTransition_60m1n"), "enemy-wake-up", "shoot", SubResource("AnimationNodeStateMachineTransition_nh5h3"), "melee", "shoot", SubResource("AnimationNodeStateMachineTransition_e84qb"), "shoot", "melee", SubResource("AnimationNodeStateMachineTransition_15iow"), "shoot", "walk-forward-left", SubResource("AnimationNodeStateMachineTransition_w1bmk"), "melee", "walk-forward-left", SubResource("AnimationNodeStateMachineTransition_8n18e"), "walk-forward-right", "melee", SubResource("AnimationNodeStateMachineTransition_iw8n8"), "walk-forward-right", "shoot", SubResource("AnimationNodeStateMachineTransition_5yit3"), "walk-forward-left", "melee", SubResource("AnimationNodeStateMachineTransition_8oino"), "walk-forward-left", "shoot", SubResource("AnimationNodeStateMachineTransition_inign"), "walk-forward-left", "walk-forward-right", SubResource("AnimationNodeStateMachineTransition_buf5e"), "walk-forward-right", "walk-forward-left", SubResource("AnimationNodeStateMachineTransition_62wom"), "enemy-wake-up", "melee", SubResource("AnimationNodeStateMachineTransition_d40vs"), "enemy-wake-up", "walk-forward-left", SubResource("AnimationNodeStateMachineTransition_wltts")]
+graph_offset = Vector2(-226, 95)
 
 [node name="enemy" instance=ExtResource("1_joek4")]
 script = ExtResource("2_1fqpe")
@@ -281,6 +285,7 @@ bones/223/rotation = Quaternion(2.18557e-08, 0, 0, 1)
 
 [node name="enemy chaser" parent="RIG-enemy/Skeleton3D" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.129894, 0.0450834, -0.0183852)
+material_overlay = SubResource("ShaderMaterial_jpdvs")
 surface_material_override/0 = ExtResource("3_2sv86")
 surface_material_override/1 = ExtResource("2_dn2ca")
 
