@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=31 format=3 uid="uid://dmkbrbq5ce8k2"]
 
-[ext_resource type="Texture2D" uid="uid://d0mpfsktubaf" path="res://Shaders_and_materials/shaders/gunfire/gunfirenoise.tres" id="1_4ckan"]
+[ext_resource type="Texture2D" uid="uid://d0mpfsktubaf" path="res://Shaders_and_materials/shaders/ability-shaders/gunfire/gunfirenoise.tres" id="1_4ckan"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_8jj6h"]
 output_port_for_preview = 0
