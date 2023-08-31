@@ -164,28 +164,137 @@ operator = 2
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_fo3q5"]
 default_input_values = [0, 0.0, 1, 0.5]
 
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_cbnqa"]
+[sub_resource type="Gradient" id="Gradient_7l5xl"]
+offsets = PackedFloat32Array(0, 0.505155, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.442911, 0.442911, 0.442911, 1, 0.458405, 0.458405, 0.458405, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4m02n"]
+gradient = SubResource("Gradient_7l5xl")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_cj4ay"]
+output_port_for_preview = 0
+texture = SubResource("GradientTexture2D_4m02n")
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_sj60f"]
+output_port_for_preview = 0
 operator = 2
 
-[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_40vyg"]
+[sub_resource type="Gradient" id="Gradient_ff2wl"]
+offsets = PackedFloat32Array(0.278351, 0.37457)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ylpx7"]
+gradient = SubResource("Gradient_ff2wl")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_1swst"]
 output_port_for_preview = 0
-default_input_values = [0, 0.0, 1, 2.0]
+texture = SubResource("GradientTexture1D_ylpx7")
+
+[sub_resource type="Gradient" id="Gradient_nl2qv"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.900344)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vylcy"]
+gradient = SubResource("Gradient_nl2qv")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_spt7v"]
+output_port_for_preview = 0
+texture = SubResource("GradientTexture1D_vylcy")
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_3o2vk"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_7nb4j"]
+default_input_values = [0, 0.0, 1, 0.005]
+operator = 6
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_vbomq"]
+default_input_values = [0, 0.0, 1, 0.995]
+operator = 7
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_8ic04"]
+output_port_for_preview = 0
+
+[sub_resource type="Gradient" id="Gradient_jwh0o"]
+offsets = PackedFloat32Array(0.219931, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8eqth"]
+gradient = SubResource("Gradient_jwh0o")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(1, 0.290598)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_5xky5"]
+texture = SubResource("GradientTexture2D_8eqth")
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_c0kap"]
+default_input_values = [0, 0.0, 1, 0.99]
+operator = 7
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_upouh"]
+default_input_values = [0, 0.0, 1, 0.01]
+operator = 6
+
+[sub_resource type="Gradient" id="Gradient_32c0p"]
+offsets = PackedFloat32Array(0.402062, 0.914089)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_em2rk"]
+gradient = SubResource("Gradient_32c0p")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_mganv"]
+texture = SubResource("GradientTexture1D_em2rk")
+
+[sub_resource type="Gradient" id="Gradient_cye3d"]
+colors = PackedColorArray(0.5, 0.5, 0.5, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fcdju"]
+gradient = SubResource("Gradient_cye3d")
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_kyo8f"]
+output_port_for_preview = 0
+texture = SubResource("GradientTexture1D_fcdju")
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_kgyf0"]
+operator = 1
+
+[sub_resource type="Gradient" id="Gradient_v6tmf"]
+offsets = PackedFloat32Array(0.0790378, 0.223368)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_38u7l"]
+gradient = SubResource("Gradient_v6tmf")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_vxw6p"]
+texture = SubResource("GradientTexture2D_38u7l")
+
+[sub_resource type="VisualShaderNodeMultiplyAdd" id="VisualShaderNodeMultiplyAdd_4825y"]
+output_port_for_preview = 0
+default_input_values = [0, 0.0, 1, -2.0, 2, 2.0]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ndhy7"]
 operator = 2
 
-[sub_resource type="Gradient" id="Gradient_yvab5"]
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_1di6c"]
+default_input_values = [0, 0.0, 1, 0.9]
+operator = 7
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_fbu40"]
-gradient = SubResource("Gradient_yvab5")
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_m7c5u"]
+default_input_values = [0, 0.0, 1, 0.1]
+operator = 6
 
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_kmaeg"]
-output_port_for_preview = 0
-expanded_output_ports = [0]
-texture = SubResource("GradientTexture1D_fbu40")
+[sub_resource type="Gradient" id="Gradient_vnpe7"]
+offsets = PackedFloat32Array(0.670103, 1)
 
-[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_hpy6n"]
-default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(1, 1, 1, 1), 2, Quaternion(0.5, 0.5, 0.5, 0.5)]
-op_type = 5
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o3not"]
+gradient = SubResource("Gradient_vnpe7")
+fill_from = Vector2(1, 0)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_oqile"]
+texture = SubResource("GradientTexture2D_o3not")
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_t4xbw"]
 
 [resource]
 code = "shader_type spatial;
@@ -197,6 +306,14 @@ uniform sampler2D curve_frg_32 : repeat_disable;
 uniform sampler2D tex_frg_19 : source_color;
 uniform sampler2D tex_frg_57;
 uniform sampler2D tex_frg_47 : source_color;
+uniform sampler2D tex_frg_77;
+uniform sampler2D tex_frg_65;
+uniform sampler2D tex_frg_85;
+uniform sampler2D tex_frg_67;
+uniform sampler2D tex_frg_78;
+uniform sampler2D tex_frg_73;
+uniform sampler2D tex_frg_80;
+uniform sampler2D tex_frg_68;
 
 
 
@@ -325,7 +442,98 @@ void fragment() {
 
 // Texture2D:47
 	vec4 n_out47p0 = texture(tex_frg_47, vec2(n_out51p0));
-	float n_out47p4 = n_out47p0.a;
+
+
+// Texture2D:77
+	vec4 n_out77p0 = texture(tex_frg_77, vec2(n_out19p0.xy));
+
+
+// Texture2D:65
+	vec4 n_out65p0 = texture(tex_frg_65, UV);
+
+
+// FloatOp:66
+	float n_out66p0 = n_out77p0.x * n_out65p0.x;
+
+
+// Texture2D:85
+	vec4 n_out85p0 = texture(tex_frg_85, UV);
+
+
+// FloatOp:86
+	float n_out86p0 = n_out66p0 + n_out85p0.x;
+
+
+// FloatOp:70
+	float n_in70p1 = 0.00500;
+	float n_out70p0 = max(n_out86p0, n_in70p1);
+
+
+// FloatOp:71
+	float n_in71p1 = 0.99500;
+	float n_out71p0 = min(n_out70p0, n_in71p1);
+
+
+// Texture2D:67
+	vec4 n_out67p0 = texture(tex_frg_67, vec2(n_out71p0));
+
+
+// VectorOp:69
+	vec3 n_out69p0 = vec3(n_out47p0.xyz) + vec3(n_out67p0.xyz);
+
+
+// Texture2D:78
+	vec4 n_out78p0 = texture(tex_frg_78, vec2(n_out19p0.xy));
+
+
+// Texture2D:73
+	vec4 n_out73p0 = texture(tex_frg_73, UV);
+
+
+// FloatOp:72
+	float n_out72p0 = n_out78p0.x + n_out73p0.x;
+
+
+// FloatOp:84
+	float n_in84p1 = 0.10000;
+	float n_out84p0 = max(n_out19p0.x, n_in84p1);
+
+
+// FloatOp:83
+	float n_in83p1 = 0.90000;
+	float n_out83p0 = min(n_out84p0, n_in83p1);
+
+
+// MultiplyAdd:81
+	float n_in81p1 = -2.00000;
+	float n_in81p2 = 2.00000;
+	float n_out81p0 = (n_out83p0 * n_in81p1) + n_in81p2;
+
+
+// Texture2D:80
+	vec4 n_out80p0 = texture(tex_frg_80, UV);
+
+
+// FloatOp:82
+	float n_out82p0 = n_out81p0 * n_out80p0.x;
+
+
+// FloatOp:79
+	float n_out79p0 = n_out72p0 - n_out82p0;
+
+
+// FloatOp:76
+	float n_in76p1 = 0.01000;
+	float n_out76p0 = max(n_out79p0, n_in76p1);
+
+
+// FloatOp:75
+	float n_in75p1 = 0.99000;
+	float n_out75p0 = min(n_out76p0, n_in75p1);
+
+
+// Texture2D:68
+	vec4 n_out68p0 = texture(tex_frg_68, vec2(n_out75p0));
 
 
 // Output:0

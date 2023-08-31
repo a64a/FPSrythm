@@ -8969,5 +8969,7 @@ current = true
 fov = 123.4
 near = 0.002
 
+[node name="dither" type="Marker3D" parent="Camera_new/SubViewportContainer/SubViewport/Camera3D"]
+
 [node name="crosshair" parent="Camera_new" instance=ExtResource("1_atyyx")]
 metadata/_edit_use_anchors_ = true

@@ -1,0 +1,1 @@
+Vector3 move_and_slide ( Vector3 linear_velocity, Vector3 up_direction=Vector3( 0, 0, 0 ), bool stop_on_slope=false, int max_slides=4, float floor_max_angle=0.785398, bool infinite_inertia=true, smooth_step=true, step_height=4 )

@@ -23,7 +23,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var counter = 0
 var can_shoot = true
 const BOB_FREQ = 1.8
-const BOB_AMP = 0.05
+const BOB_AMP = 0.03
 var t_bob = 0.0
 
 func _ready():

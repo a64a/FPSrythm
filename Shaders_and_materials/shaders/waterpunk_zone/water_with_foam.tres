@@ -1,4 +1,6 @@
-[gd_resource type="VisualShader" load_steps=63 format=3 uid="uid://ctfmcyju6lb7f"]
+[gd_resource type="VisualShader" load_steps=61 format=3 uid="uid://sarp6h1xe7k0"]
+
+[ext_resource type="Texture2D" uid="uid://bhe820vp36wus" path="res://2D assets/water.png" id="1_w3xmi"]
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_rx5ao"]
 default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
@@ -52,8 +54,8 @@ op_type = 0
 operator = 4
 
 [sub_resource type="Curve" id="Curve_86i71"]
-_data = [Vector2(0, 1), 0.0, -1.90891, 0, 0, Vector2(0.5, 0), -2.04716, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 1), 0.0, -1.90891, 0, 0, Vector2(0.496465, 0), -2.04716, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 metadata/_snap_enabled = true
 metadata/_snap_count = 4
 
@@ -70,7 +72,7 @@ operator = 4
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_a1ax2"]
 
 [sub_resource type="Gradient" id="Gradient_agecs"]
-offsets = PackedFloat32Array(0.281787, 0.340206)
+offsets = PackedFloat32Array(0.281787, 0.969849)
 colors = PackedColorArray(0.0509804, 0, 0, 0, 0.974167, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_y6b56"]
@@ -82,24 +84,10 @@ expanded_output_ports = [0]
 texture = SubResource("GradientTexture1D_y6b56")
 texture_type = 1
 
-[sub_resource type="Gradient" id="Gradient_xl40q"]
-offsets = PackedFloat32Array(0.357388, 0.71134)
-colors = PackedColorArray(0, 0, 0, 1, 0.188193, 0.188193, 0.188193, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_gm7rv"]
-frequency = 0.0025
-fractal_type = 0
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pf5qn"]
-seamless = true
-seamless_blend_skirt = 1.0
-color_ramp = SubResource("Gradient_xl40q")
-noise = SubResource("FastNoiseLite_gm7rv")
-
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ikw5h"]
 output_port_for_preview = 0
-texture = SubResource("NoiseTexture2D_pf5qn")
-texture_type = 1
+texture = ExtResource("1_w3xmi")
+texture_type = 2
 
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_ky1sv"]
 default_input_values = [0, 0.0, 1, 0.6]
@@ -175,7 +163,8 @@ texture = SubResource("GradientTexture2D_26qmx")
 [sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_8qlhy"]
 
 [sub_resource type="Gradient" id="Gradient_ms2sp"]
-colors = PackedColorArray(0, 0, 1, 1, 0, 0.658824, 1, 1)
+offsets = PackedFloat32Array(0.0954774, 0.919598)
+colors = PackedColorArray(0, 0.019864, 1, 1, 0, 0.658824, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_1ru5h"]
 gradient = SubResource("Gradient_ms2sp")
@@ -245,7 +234,7 @@ default_input_values = [0, Vector2(0, 0), 1, Vector2(1, 1)]
 op_type = 0
 
 [sub_resource type="Gradient" id="Gradient_kpnxq"]
-offsets = PackedFloat32Array(0, 0.285223, 0.570447, 1)
+offsets = PackedFloat32Array(0, 0.537688, 0.570447, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.177204, 0.177204, 0.177204, 1, 0.735395, 0.735395, 0.735395, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_b38tr"]
@@ -261,7 +250,7 @@ code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
 
 uniform sampler2D curve_frg_79 : repeat_disable;
-uniform sampler2D tex_frg_6 : source_color;
+uniform sampler2D tex_frg_6 : hint_normal;
 uniform sampler2D curve_frg_94 : repeat_disable;
 uniform sampler2D tex_frg_71 : source_color;
 uniform sampler2D tex_frg_99 : source_color;
