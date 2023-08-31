@@ -1,7 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://6dqvrjlk1o3m"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_j5ptk"]
-load_path = "res://.godot/imported/brck23La.jpg-65ed7d981ff36c14fb6fcd4307f03275.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hoqw"]
 albedo_texture = SubResource("CompressedTexture2D_j5ptk")
