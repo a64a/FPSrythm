@@ -129,3 +129,5 @@ skeleton = NodePath("../../StaticBody3D2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
 transform = Transform3D(15.145, 0, 0, 0, 3.35, 0, 0, 0, 1, -3.23393, 2.04063, -22.1638)
 shape = SubResource("ConvexPolygonShape3D_pglwo")
+
+[connection signal="dead" from="hydrant" to="Player" method="_on_hydrant_dead"]

@@ -26,6 +26,7 @@ const BOB_FREQ = 1.8
 const BOB_AMP = 0.03
 var t_bob = 0.0
 
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED # Forces the mouse into the center
 
@@ -142,4 +143,10 @@ func _physics_process(delta):
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP + 2.25
+	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP - 0.05
 	return pos
+
+
+func _on_hydrant_dead():
+		get_tree().change_scene_to_file("res://Scenes/Menus/menu.tscn") # Quit to main menu
+	

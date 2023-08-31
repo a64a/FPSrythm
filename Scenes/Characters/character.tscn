@@ -8939,7 +8939,6 @@ active = true
 [node name="Camera_new" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0157732, 2.25157, 0.211132)
 cull_mask = 1048573
-current = true
 fov = 66.8
 near = 0.1
 far = 100.0
@@ -8968,8 +8967,6 @@ cull_mask = 10
 current = true
 fov = 123.4
 near = 0.002
-
-[node name="dither" type="Marker3D" parent="Camera_new/SubViewportContainer/SubViewport/Camera3D"]
 
 [node name="crosshair" parent="Camera_new" instance=ExtResource("1_atyyx")]
 metadata/_edit_use_anchors_ = true
