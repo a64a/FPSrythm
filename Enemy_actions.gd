@@ -39,7 +39,7 @@ func _process(_delta):
 		state = alert
 		await get_tree().create_timer(1.4).timeout
 	if is_in_range(2):
-		state = fighting	
+		state = fighting
 	match state:
 		alert:
 			eyes.look_at(transform.origin + velocity, Vector3.UP)
@@ -49,7 +49,6 @@ func _process(_delta):
 			var next_nav_point = nav_agent.get_next_path_position()
 			if global_position.distance_to(target.global_position) > 2:
 				velocity = (next_nav_point - global_transform.origin).normalized() * speed
-				state_machine.travel("walk-forward-left")
 		fighting:
 			if last_hit_var == var2 or last_hit_var == null:
 				if is_in_range(2):
