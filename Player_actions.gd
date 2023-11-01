@@ -9,7 +9,7 @@ extends CharacterBody3D
 @onready var camera = get_node("head/finger/Camera_new")
 @onready var guncam = get_node("head/finger/Camera_new/SubViewportContainer/SubViewport/Camera3D")
 @onready var audio = get_node("../Music Player")
-@onready var single_beat = preload("res://Sound/LMMS files/Single beat.wav")
+@onready var single_beat = preload("res://music + SFX/LMMS files/Single beat.wav")
 @onready var head = $head
 @export var sens = 0.5
 
@@ -25,6 +25,7 @@ var can_shoot = true
 const BOB_FREQ = 1.8
 const BOB_AMP = 0.03
 var t_bob = 0.0
+signal hit
 
 
 func _ready():
@@ -79,7 +80,6 @@ func ray_check(no_ray): # Checks if any of the rays collides
 	if truth_check == true and collider.is_in_group("enemy"): # If instance is valind and in the group enemy, destroy it
 		if collider.hp >= 1:
 			collider.hp -= 1
-			print("hit")
 		else:
 			collider.queue_free()
 	else: # Otherwise add a bullet hole
@@ -97,7 +97,7 @@ func ray_check(no_ray): # Checks if any of the rays collides
 		await get_tree().create_timer(0.145).timeout # Endlag, and to avoid animation cancelling
 	can_shoot = false
 
-func distance_check(): # Checks whether the collider is close enough to trigger the punch
+func distance_check(): # Checks whether the collider is close enough to trigger the shot
 	state_machine.travel("shoot") 
 	if ray1.is_colliding():
 		ray_check(ray1)
@@ -125,7 +125,7 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back") # Get absolute input direction
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() # Make that direction relative to ratation
 	if Input.is_action_just_pressed("pause"):
-		get_tree().change_scene_to_file("res://Scenes/menu.tscn") # Quit to main menu
+		get_tree().change_scene_to_file("res://Scenes/Menus/menu.tscn") # Quit to main menu
 	if Input.is_action_pressed("dash"):
 		speed = sprint_speed # Change speed to sprint speed when sprinting
 	else:
@@ -153,4 +153,3 @@ func _headbob(time) -> Vector3:
 
 func _on_hydrant_dead():
 		get_tree().change_scene_to_file("res://Scenes/Menus/menu.tscn") # Quit to main menu
-	

@@ -1,7 +1,7 @@
 extends Node3D
 
-signal pull
 signal drill
+signal pull
 
 func drill_attack():
 	emit_signal("drill")
@@ -10,5 +10,3 @@ func drill_attack():
 func pull_attack():
 	emit_signal("pull")
 	print("a")
-
-

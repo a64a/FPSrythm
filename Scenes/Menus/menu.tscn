@@ -26,6 +26,10 @@ grow_vertical = 0
 layout_mode = 2
 text = "Start"
 
+[node name="Authors" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Authors"
+
 [node name="Options" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 text = "Options"
@@ -35,5 +39,6 @@ layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Authors" to="." method="_on_authors_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

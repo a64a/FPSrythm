@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dlqb2pd3dvnwf"]
+[gd_scene load_steps=20 format=3 uid="uid://dlqb2pd3dvnwf"]
 
 [ext_resource type="PackedScene" uid="uid://crnrnqimmb3wn" path="res://Scenes/Characters/Player.tscn" id="1_kdqto"]
 [ext_resource type="Script" path="res://Player_actions.gd" id="2_34k83"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ue45w1gfqld1" path="res://addons/kenney_prototype_textures/dark/texture_07.png" id="5_xdlxt"]
 [ext_resource type="PackedScene" uid="uid://eeovrx8s18t4" path="res://Scenes/Characters/Enemies.tscn" id="6_ncofg"]
 [ext_resource type="PackedScene" uid="uid://celg4cwluy66t" path="res://Scenes/Map_assets/shooting range.tscn" id="7_wopm0"]
+[ext_resource type="PackedScene" uid="uid://dg3fguhhm2eh3" path="res://Scenes/Map_assets/room.tscn" id="9_pb75k"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_50b7q"]
 radius = 0.279076
@@ -93,7 +94,7 @@ omni_range = 40.0
 [node name="Music Player" type="AudioStreamPlayer" parent="."]
 autoplay = true
 
-[node name="hydrant" parent="." instance=ExtResource("6_ncofg")]
+[node name="hydrant" parent="." groups=["enemy"] instance=ExtResource("6_ncofg")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.0307601, 3.41184, -23.6973)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -129,5 +130,8 @@ skeleton = NodePath("../../StaticBody3D2")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
 transform = Transform3D(15.145, 0, 0, 0, 3.35, 0, 0, 0, 1, -3.23393, 2.04063, -22.1638)
 shape = SubResource("ConvexPolygonShape3D_pglwo")
+
+[node name="FullRoom" parent="." instance=ExtResource("9_pb75k")]
+transform = Transform3D(-0.0696794, 2.25134e-16, 0.575799, 2.02296e-16, 0.58, -2.02296e-16, -0.575799, 1.76528e-16, -0.0696794, -18.9558, 0.491051, 13.7539)
 
 [connection signal="dead" from="hydrant" to="Player" method="_on_hydrant_dead"]
