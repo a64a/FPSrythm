@@ -15,6 +15,13 @@ run/main_scene="res://Scenes/Map_assets/Root.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://2D assets/icon.svg"
 
+[display]
+
+window/size/viewport_width=2304
+window/size/viewport_height=1296
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
+
 [filesystem]
 
 import/fbx/enabled=false

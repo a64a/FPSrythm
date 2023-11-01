@@ -1,37 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://di1uqu7umsbpl"]
+[gd_scene load_steps=5 format=3 uid="uid://di1uqu7umsbpl"]
 
 [ext_resource type="Texture2D" uid="uid://xpund802d26e" path="res://2D assets/4048.Transparent-3.png-680x1000.png" id="1_o82d0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k6y8l"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k2u6e"]
-load_path = "res://.godot/imported/1022053-200.png-b3a218dc2025a6a90356d54d9a8a372d.s3tc.ctex"
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_b75eh"]
+_surfaces = [{
+"2d": true,
+"aabb": AABB(-340, -189, 0, 680, 378, 0),
+"attribute_data": PackedByteArray(0, 0, 128, 63, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 63, 0, 0, 0, 0),
+"format": 33558545,
+"index_count": 6,
+"index_data": PackedByteArray(3, 0, 0, 0, 1, 0, 1, 0, 2, 0, 3, 0),
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 170, 67, 0, 0, 61, 67, 0, 0, 170, 195, 0, 0, 61, 67, 0, 0, 170, 195, 0, 0, 61, 195, 0, 0, 170, 67, 0, 0, 61, 195)
+}]
 
 [node name="Ui" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 10.0
-offset_top = 6.0
-offset_right = 10.0
-offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="CenterContainer"]
 visibility_layer = 16
@@ -39,23 +45,18 @@ material = SubResource("ShaderMaterial_k6y8l")
 scale = Vector2(0.25, 0.25)
 texture = SubResource("CompressedTexture2D_k2u6e")
 
-[node name="hurtbox" type="CenterContainer" parent="."]
+[node name="hurtbox" type="Control" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="hurtcam" type="Sprite2D" parent="hurtbox"]
+[node name="hurtcam" type="MeshInstance2D" parent="hurtbox"]
 visible = false
-position = Vector2(8.99997, 12)
-scale = Vector2(1.68824, 1.69312)
+position = Vector2(1146.5, 642.5)
+scale = Vector2(3.39853, 3.42592)
+mesh = SubResource("ArrayMesh_b75eh")
 texture = ExtResource("1_o82d0")

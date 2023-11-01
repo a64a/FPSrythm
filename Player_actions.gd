@@ -9,7 +9,7 @@ extends CharacterBody3D
 @onready var camera = get_node("head/finger/Camera_new")
 @onready var guncam = get_node("head/finger/Camera_new/SubViewportContainer/SubViewport/Camera3D")
 @onready var audio = get_node("../Music Player")
-@onready var single_beat = preload("res://Sound/LMMS files/Single beat.wav")
+@onready var single_beat = preload("res://music + SFX/LMMS files/Single beat.wav")
 @onready var head = $head
 @export var sens = 0.5
 
@@ -77,7 +77,11 @@ func ray_check(no_ray): # Checks if any of the rays collides
 	var collider = no_ray.get_collider() # Gets the colliding objects id
 	var truth_check = is_instance_valid(collider) # Checks if the instance is valid
 	if truth_check == true and collider.is_in_group("enemy"): # If instance is valind and in the group enemy, destroy it
-		collider.queue_free()
+		if collider.hp >= 1:
+			collider.hp -= 1
+			print("hit")
+		else:
+			collider.queue_free()
 	else: # Otherwise add a bullet hole
 		var b = hole.instantiate()
 		get_tree().get_root().add_child(b)
@@ -121,7 +125,7 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back") # Get absolute input direction
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized() # Make that direction relative to ratation
 	if Input.is_action_just_pressed("pause"):
-		get_tree().change_scene_to_file("res://Scenes/menu.tscn") # Quit to main menu
+		get_tree().change_scene_to_file("res://Scenes/Menus/menu.tscn") # Quit to main menu
 	if Input.is_action_pressed("dash"):
 		speed = sprint_speed # Change speed to sprint speed when sprinting
 	else:
@@ -149,4 +153,3 @@ func _headbob(time) -> Vector3:
 
 func _on_hydrant_dead():
 		get_tree().change_scene_to_file("res://Scenes/Menus/menu.tscn") # Quit to main menu
-	
