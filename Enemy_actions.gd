@@ -40,8 +40,6 @@ func _process(_delta):
 		await get_tree().create_timer(1.4).timeout
 	if is_in_range(2):
 		state = fighting
-	else:
-		state = alert
 	match state:
 		alert:
 			eyes.look_at(transform.origin + velocity, Vector3.UP)

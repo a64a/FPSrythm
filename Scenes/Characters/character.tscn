@@ -7685,7 +7685,7 @@ bones/88/parent = 87
 bones/88/rest = Transform3D(1, -5.83668e-09, -5.22678e-08, -5.51858e-09, 0.976691, -0.214649, 5.23024e-08, 0.214649, 0.976691, 1.77177e-07, 0.0440394, 2.03745e-09)
 bones/88/enabled = true
 bones/88/position = Vector3(1.77177e-07, 0.0440394, 2.03745e-09)
-bones/88/rotation = Quaternion(0.107955, -2.62962e-08, 8.00009e-11, 0.994156)
+bones/88/rotation = Quaternion(0.107955, -2.62962e-08, 8.00008e-11, 0.994156)
 bones/88/scale = Vector3(1, 1, 1)
 bones/89/name = "ORG-f_ring.03.L"
 bones/89/parent = 88
@@ -7706,7 +7706,7 @@ bones/91/parent = 90
 bones/91/rest = Transform3D(1, -5.83668e-09, -5.22678e-08, -5.51858e-09, 0.976691, -0.214649, 5.23024e-08, 0.214649, 0.976691, 1.77177e-07, 0.0440394, 2.03745e-09)
 bones/91/enabled = true
 bones/91/position = Vector3(1.77177e-07, 0.0440394, 2.03745e-09)
-bones/91/rotation = Quaternion(0.107955, -2.62962e-08, 8.00009e-11, 0.994156)
+bones/91/rotation = Quaternion(0.107955, -2.62962e-08, 8.00008e-11, 0.994156)
 bones/91/scale = Vector3(1, 1, 1)
 bones/92/name = "DEF-f_ring.03.L"
 bones/92/parent = 91
@@ -8937,20 +8937,22 @@ anim_player = NodePath("..")
 active = true
 
 [node name="Camera_new" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0157732, 2.25157, 0.211132)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0157732, 2.25157, 0.0697971)
 cull_mask = 1048573
 fov = 66.8
 near = 0.1
 far = 100.0
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Camera_new"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -704.0
-offset_top = -396.0
-offset_right = 704.0
-offset_bottom = 396.0
+anchors_preset = -1
+anchor_left = -0.0555556
+anchor_top = -0.0555556
+anchor_right = 1.05556
+anchor_bottom = 1.05556
+offset_left = 128.0
+offset_top = 72.0
+offset_right = -128.0
+offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -8962,11 +8964,10 @@ size = Vector2i(2560, 1440)
 render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Camera_new/SubViewportContainer/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62279, 0.0190551)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62279, -0.115736)
 cull_mask = 10
 current = true
-fov = 123.4
+fov = 98.9
 near = 0.002
 
 [node name="crosshair" parent="Camera_new" instance=ExtResource("1_atyyx")]
-metadata/_edit_use_anchors_ = true
