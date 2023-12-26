@@ -1,7 +1,7 @@
 # build game using godot and publish artifacts
 
 name: Godot CI
-on: [push]
+on: [release]
 
 jobs:
   #  build-win:
